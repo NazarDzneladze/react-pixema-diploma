@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.js": "/react-pixema-diploma/static/js/main.42eabd36.js",
+    "main.js": "/react-pixema-diploma/static/js/main.ae47cf64.js",
+    "static/media/pixema-logo.svg": "/react-pixema-diploma/static/media/pixema-logo.213cb11009e7c2b7418bc4181977f67f.svg",
     "index.html": "/react-pixema-diploma/index.html",
-    "main.42eabd36.js.map": "/react-pixema-diploma/static/js/main.42eabd36.js.map"
+    "main.ae47cf64.js.map": "/react-pixema-diploma/static/js/main.ae47cf64.js.map"
   },
   "entrypoints": [
-    "static/js/main.42eabd36.js"
+    "static/js/main.ae47cf64.js"
   ]
 }
