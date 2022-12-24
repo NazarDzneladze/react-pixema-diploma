@@ -1,11 +1,7 @@
-import React, { useEffect } from "react";
-import {useAppSelector } from "./store";
+import { RouterProvider } from "react-router-dom";
+import { router } from "router";
 
 export const App = () => {
-  const { currentTheme } = useAppSelector((state) => state.theme);
-  useEffect(() => {
-    document.documentElement.setAttribute("theme", currentTheme);
-  }, [currentTheme]);
-
-  return <div>App</div>;
+  return <RouterProvider router={router} />;
 };
+
