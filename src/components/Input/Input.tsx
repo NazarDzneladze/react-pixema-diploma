@@ -1,5 +1,9 @@
 import { StyledInput } from "./styles";
 
-export const Input = () => {
-  return <StyledInput />;
+interface IProps {
+  placeholder: string;
+}
+
+export const Input = (props: IProps) => {
+  return <StyledInput {...props} />;
 };
