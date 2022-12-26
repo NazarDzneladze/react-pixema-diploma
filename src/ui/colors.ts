@@ -4,7 +4,7 @@ export enum Color {
   SECONDARY = "#80858B",
   BLACK = "#000000",
   DARK = "#242426",
-  GRAPHITE = "#323537",
+  GRAPHITE = "var(--graphite)",
   ERROR = "#FF5154",
   LIGHT = "#AFB2B6",
   WHITE = "#FFFFFF",
