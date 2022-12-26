@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { StyledMainTemplate } from "./styles";
+import { AccountInfo, Search, StyledMainTemplate, StyledPixemaIcon } from "./styles";
 import { useAppSelector } from "store";
-import { Header, Navigation } from "components";
+import { Navigation } from "components";
 import { Outlet } from "react-router-dom";
 
 export const MainTemplate = () => {
@@ -12,7 +12,9 @@ export const MainTemplate = () => {
 
   return (
     <StyledMainTemplate>
-      <Header />
+      <StyledPixemaIcon />
+      <Search placeholder="Search" />
+      <AccountInfo />
       <Navigation />
       <Outlet />
     </StyledMainTemplate>
