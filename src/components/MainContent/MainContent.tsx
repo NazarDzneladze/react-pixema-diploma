@@ -1,12 +1,18 @@
-import { Header } from "components";
+import { BurgerIcon } from "assets";
+import { useWindowSize } from "hooks";
 import { Outlet } from "react-router-dom";
-import { StyledMainContent } from "./styles";
+import { Conteiner, Search, StyledMainContent, StyledPixemaIcon } from "./styles";
 
 export const MainContent = () => {
+  const { width = 0 } = useWindowSize();
   return (
     <StyledMainContent>
-      <Header />
-      <Outlet />
+      {width < 1440 && <StyledPixemaIcon />}
+      <Search placeholder="Search" />
+      <BurgerIcon />
+      <Conteiner>
+        <Outlet />
+      </Conteiner>
     </StyledMainContent>
   );
 };
