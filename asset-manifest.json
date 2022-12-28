@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/react-pixema-diploma/static/js/main.a435bec7.js",
+    "main.js": "/react-pixema-diploma/static/js/main.2f266a9c.js",
     "static/media/auth-background.png": "/react-pixema-diploma/static/media/auth-background.ac3b7d52f053ac987825.png",
     "static/media/pixema-logo.svg": "/react-pixema-diploma/static/media/pixema-logo.a93fab9537ac658ff62c0b350ffe409f.svg",
     "index.html": "/react-pixema-diploma/index.html",
     "static/media/burger-icon.svg": "/react-pixema-diploma/static/media/burger-icon.5204f44ebae1fdbbb4df3061cf46b75a.svg",
-    "main.a435bec7.js.map": "/react-pixema-diploma/static/js/main.a435bec7.js.map"
+    "main.2f266a9c.js.map": "/react-pixema-diploma/static/js/main.2f266a9c.js.map"
   },
   "entrypoints": [
-    "static/js/main.a435bec7.js"
+    "static/js/main.2f266a9c.js"
   ]
 }
