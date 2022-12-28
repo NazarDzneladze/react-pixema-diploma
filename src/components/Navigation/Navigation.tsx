@@ -1,4 +1,4 @@
-import { CustomNavLink } from "components/CustomNavLink/CustomNavLink";
+import { CustomNavLink } from "components";
 import { ROUTE } from "router";
 import { StyledNavigation } from "./styles";
 

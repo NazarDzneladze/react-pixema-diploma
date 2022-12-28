@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Breakpoint } from "ui";
+import { Breakpoint} from "ui";
 
 const StyledNavigation = styled.nav`
   ${Breakpoint.XXS} {
