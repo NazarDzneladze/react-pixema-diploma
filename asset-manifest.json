@@ -1,13 +1,18 @@
 {
   "files": {
-    "main.js": "/react-pixema-diploma/static/js/main.2f266a9c.js",
+    "main.js": "/react-pixema-diploma/static/js/main.d8316127.js",
     "static/media/auth-background.png": "/react-pixema-diploma/static/media/auth-background.ac3b7d52f053ac987825.png",
     "static/media/pixema-logo.svg": "/react-pixema-diploma/static/media/pixema-logo.a93fab9537ac658ff62c0b350ffe409f.svg",
+    "static/media/settings-icon.svg": "/react-pixema-diploma/static/media/settings-icon.c926780a7bc919f71b4db92c2bfca5e0.svg",
+    "static/media/trends-icon.svg": "/react-pixema-diploma/static/media/trends-icon.a9d460fabd9b1c3d46591a3c28db41e8.svg",
+    "static/media/home-icon.svg": "/react-pixema-diploma/static/media/home-icon.b6b597feb47125b1df11379c6685ac02.svg",
+    "static/media/favorites-icon.svg": "/react-pixema-diploma/static/media/favorites-icon.68d38c3ab7c84d17472cfab91cf588b8.svg",
     "index.html": "/react-pixema-diploma/index.html",
     "static/media/burger-icon.svg": "/react-pixema-diploma/static/media/burger-icon.5204f44ebae1fdbbb4df3061cf46b75a.svg",
-    "main.2f266a9c.js.map": "/react-pixema-diploma/static/js/main.2f266a9c.js.map"
+    "static/media/search-settings-icon.svg": "/react-pixema-diploma/static/media/search-settings-icon.a628ca3e3aa3b2601aba441b840aed98.svg",
+    "main.d8316127.js.map": "/react-pixema-diploma/static/js/main.d8316127.js.map"
   },
   "entrypoints": [
-    "static/js/main.2f266a9c.js"
+    "static/js/main.d8316127.js"
   ]
 }
