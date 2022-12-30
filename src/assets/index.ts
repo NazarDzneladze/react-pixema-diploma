@@ -5,6 +5,7 @@ import { ReactComponent as HomeIcon } from "./icons/home-icon.svg";
 import { ReactComponent as TrendsIcon } from "./icons/trends-icon.svg";
 import { ReactComponent as FavoritesIcon } from "./icons/favorites-icon.svg";
 import { ReactComponent as SettingsIcon } from "./icons/settings-icon.svg";
+import { ReactComponent as SearchIcon } from "./icons/search-settings-icon.svg";
 
 export {
   PixemaIcon,
@@ -14,4 +15,5 @@ export {
   TrendsIcon,
   FavoritesIcon,
   SettingsIcon,
+  SearchIcon,
 };
