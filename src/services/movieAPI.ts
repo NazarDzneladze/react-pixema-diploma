@@ -17,6 +17,6 @@ export class MovieAPI {
       params,
     });
 
-    return data;
+    return data.Search;
   }
 }
