@@ -1,7 +1,13 @@
 import styled from "styled-components";
-import { Breakpoint} from "ui";
+import { Breakpoint } from "ui";
 
 const StyledNavigation = styled.nav`
+  a {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    column-gap: 20px;
+  }
+
   ${Breakpoint.XXS} {
     display: none;
   }
