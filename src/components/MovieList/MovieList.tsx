@@ -1,6 +1,17 @@
+import { MovieItem } from "components";
+import { IMovie } from "types";
 import { StyledMovieList } from "./style";
 
-export const MovieList = () => {
+interface IProps {
+  movies: IMovie[];
+}
 
-  return <StyledMovieList></StyledMovieList>;
+export const MovieList = ({ movies }: IProps) => {
+  return (
+    <StyledMovieList>
+      {movies.map((movie) => (
+        <MovieItem movie={movie} key={movie.imdbID} />
+      ))}
+    </StyledMovieList>
+  );
 };
