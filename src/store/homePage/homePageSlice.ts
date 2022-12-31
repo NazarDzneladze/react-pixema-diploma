@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { MovieAPI } from "services";
-import { IMovie } from "types";
+import { IMovieAPI } from "types";
 
 interface IMoviesState {
-  movies: IMovie[];
+  movies: IMovieAPI[];
 }
 
-export const fetchMovies = createAsyncThunk<IMovie[]>("homePage/fetchMovies", async () => {
+export const fetchMovies = createAsyncThunk<IMovieAPI[]>("homePage/fetchMovies", async () => {
   return await MovieAPI.getMovieBySearch("star wars");
 });
 
