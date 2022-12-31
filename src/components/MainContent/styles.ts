@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { PixemaIcon } from "assets";
-import { Button, Input } from "components";
+import { Input } from "components";
 import { Breakpoint, Color } from "ui";
 
 const StyledMainContent = styled.div`
@@ -18,6 +18,7 @@ const StyledMainContent = styled.div`
   }
 
   ${Breakpoint.XXL} {
+	column-gap: 42px;
     grid-template-columns: 1fr auto;
     grid-template-rows: auto 1fr;
   }
@@ -42,6 +43,10 @@ const Container = styled.div`
 
   ${Breakpoint.MD} {
     grid-column: span 3;
+  }
+
+  ${Breakpoint.XXL}{
+	grid-column: span 2;
   }
 `;
 

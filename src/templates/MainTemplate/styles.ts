@@ -4,7 +4,7 @@ import { Breakpoint, Color } from "ui";
 const StyledMainTemplate = styled.div`
   display: grid;
 
-  height: 100vh;
+  min-height: 100vh;
 
   background-color: ${Color.DARK_THEME};
 
