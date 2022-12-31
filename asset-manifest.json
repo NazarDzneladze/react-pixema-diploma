@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/react-pixema-diploma/static/js/main.d8316127.js",
+    "main.js": "/react-pixema-diploma/static/js/main.b09efced.js",
     "static/media/auth-background.png": "/react-pixema-diploma/static/media/auth-background.ac3b7d52f053ac987825.png",
     "static/media/pixema-logo.svg": "/react-pixema-diploma/static/media/pixema-logo.a93fab9537ac658ff62c0b350ffe409f.svg",
     "static/media/settings-icon.svg": "/react-pixema-diploma/static/media/settings-icon.c926780a7bc919f71b4db92c2bfca5e0.svg",
@@ -10,9 +10,9 @@
     "index.html": "/react-pixema-diploma/index.html",
     "static/media/burger-icon.svg": "/react-pixema-diploma/static/media/burger-icon.5204f44ebae1fdbbb4df3061cf46b75a.svg",
     "static/media/search-settings-icon.svg": "/react-pixema-diploma/static/media/search-settings-icon.a628ca3e3aa3b2601aba441b840aed98.svg",
-    "main.d8316127.js.map": "/react-pixema-diploma/static/js/main.d8316127.js.map"
+    "main.b09efced.js.map": "/react-pixema-diploma/static/js/main.b09efced.js.map"
   },
   "entrypoints": [
-    "static/js/main.d8316127.js"
+    "static/js/main.b09efced.js"
   ]
 }
