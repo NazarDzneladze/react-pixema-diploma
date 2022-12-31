@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export class MovieAPI {
-  private static readonly BASE_URL = "http://www.omdbapi.com/?apikey=d4a0573f&";
+  private static readonly BASE_URL = "https://www.omdbapi.com/?apikey=d4a0573f&";
 
   private static readonly API = axios.create({
     baseURL: MovieAPI.BASE_URL,
