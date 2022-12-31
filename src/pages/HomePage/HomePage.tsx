@@ -1,7 +1,8 @@
+import { MovieList } from "components";
+import { transformMovies } from "mappers";
 import { useEffect } from "react";
-import { MovieAPI } from "services";
 import { useAppDispatch, useAppSelector } from "store";
-import { fetchMovies } from "store/homePage/homePageSlice";
+import { fetchMovies } from "store";
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();
@@ -11,7 +12,7 @@ export const HomePage = () => {
     dispatch(fetchMovies());
   }, [dispatch]);
 
-  console.log(movies);
+  const transformedMovies = transformMovies(movies);
 
-  return <div>HomePage</div>;
+  return <MovieList movies={transformedMovies} />;
 };
