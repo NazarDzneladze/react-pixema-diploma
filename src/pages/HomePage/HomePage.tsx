@@ -9,7 +9,7 @@ export const HomePage = () => {
   const { movies } = useAppSelector((state) => state.homePage);
 
   useEffect(() => {
-    dispatch(fetchMovies());
+    dispatch(fetchMovies("indiana jones"));
   }, [dispatch]);
 
   const transformedMovies = transformMovies(movies);

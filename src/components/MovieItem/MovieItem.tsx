@@ -1,3 +1,5 @@
+import { generatePath, Link } from "react-router-dom";
+import { ROUTE } from "router";
 import { IMovie } from "types";
 import { MoviePoster, MovieTitle, StyledMovieItem } from "./style";
 
@@ -8,8 +10,10 @@ interface IProps {
 export const MovieItem = ({ movie }: IProps) => {
   return (
     <StyledMovieItem>
-      <MoviePoster src={movie.poster} />
-      <MovieTitle>{movie.title}</MovieTitle>
+      <Link to={generatePath(ROUTE.DETAILS, { imdb: movie.imdbID })}>
+        <MoviePoster src={movie.poster} />
+        <MovieTitle>{movie.title}</MovieTitle>
+      </Link>
     </StyledMovieItem>
   );
 };
