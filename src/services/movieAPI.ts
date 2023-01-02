@@ -7,16 +7,25 @@ export class MovieAPI {
     baseURL: MovieAPI.BASE_URL,
   });
 
-  public static async getMovieBySearch(s: string, type = "movie") {
+  static async getMovieBySearch(s: string, type = "movie") {
     const params = {
       s: s,
       type: type,
     };
 
-    const { data } = await this.API.get("", {
-      params,
-    });
+    const { data } = await this.API.get("", { params });
 
     return data.Search;
+  }
+
+  static async getMovieByIMDB(imdb: string) {
+    const params = {
+      i: imdb,
+      plot: "full",
+    };
+
+    const { data } = await this.API.get("", { params });
+
+    return data;
   }
 }
