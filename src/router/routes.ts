@@ -4,6 +4,7 @@ export enum ROUTE {
   FAVORITES = "favorites",
   SETTINGS = "settings",
   NOT_FOUND = "*",
+  DETAILS = "movies/:imdb",
   SIGN_IN = "sign-in",
   SIGN_OUT = "sign-out",
 }

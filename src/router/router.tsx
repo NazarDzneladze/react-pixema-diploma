@@ -1,5 +1,13 @@
 import { RequareAuth } from "components";
-import { FavoritesPage, HomePage, NotFoundPage, SettingsPage, SignInPage, TrendsPage } from "pages";
+import {
+  DetailsPage,
+  FavoritesPage,
+  HomePage,
+  NotFoundPage,
+  SettingsPage,
+  SignInPage,
+  TrendsPage,
+} from "pages";
 import { createRoutesFromElements, Route } from "react-router";
 import { createBrowserRouter } from "react-router-dom";
 import { AuthTemplate, MainTemplate } from "templates";
@@ -16,6 +24,7 @@ export const router = createBrowserRouter(
         </Route>
         <Route path={ROUTE.SETTINGS} element={<SettingsPage />} />
         <Route path={ROUTE.NOT_FOUND} element={<NotFoundPage />} />
+        <Route path={ROUTE.DETAILS} element={<DetailsPage />} />
       </Route>
       <Route path={ROUTE.SIGN_IN} element={<AuthTemplate />}>
         <Route index element={<SignInPage />} />
