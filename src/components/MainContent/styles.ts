@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { PixemaIcon } from "assets";
 import { Input } from "components";
 import { Breakpoint, Color } from "ui";
+import { Link } from "react-router-dom";
 
 const StyledMainContent = styled.div`
   display: grid;
@@ -24,7 +24,7 @@ const StyledMainContent = styled.div`
   }
 `;
 
-const StyledPixemaIcon = styled(PixemaIcon)`
+const PixemaIconLink = styled(Link)`
   place-self: center start;
 
   path:nth-child(n + 4) {
@@ -68,4 +68,4 @@ const SearchWrapper = styled.div`
   }
 `;
 
-export { StyledMainContent, StyledPixemaIcon, Container, Search, SearchWrapper };
+export { StyledMainContent, PixemaIconLink, Container, Search, SearchWrapper };
