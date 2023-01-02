@@ -1,10 +1,14 @@
+import { PixemaIcon } from "assets";
 import { Navigation } from "components";
-import { CopyrightText, StyledPixemaIcon, StyledSideBar } from "./styles";
+import { ROUTE } from "router";
+import { CopyrightText, PixemaIconLink, StyledSideBar } from "./styles";
 
 export const SideBar = () => {
   return (
     <StyledSideBar>
-      <StyledPixemaIcon />
+      <PixemaIconLink to={ROUTE.HOME}>
+        <PixemaIcon />
+      </PixemaIconLink>
       <Navigation />
       <CopyrightText>© All Rights Reserved</CopyrightText>
     </StyledSideBar>

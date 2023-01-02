@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { PixemaIcon } from "assets";
 import { Breakpoint, Color } from "ui";
+import { Link } from "react-router-dom";
 
-const StyledPixemaIcon = styled(PixemaIcon)`
+const PixemaIconLink = styled(Link)`
   place-self: center start;
 
   path:nth-child(n + 4) {
@@ -31,4 +31,4 @@ const StyledSideBar = styled.div`
   }
 `;
 
-export { StyledSideBar, StyledPixemaIcon, CopyrightText };
+export { StyledSideBar, PixemaIconLink, CopyrightText };
