@@ -4,5 +4,6 @@ import { SettingsPage } from "./SettingsPage/SettingsPage";
 import { FavoritesPage } from "./FavoritesPage/FavoritesPage";
 import { TrendsPage } from "./TrendsPage/TrendsPage";
 import { SignInPage } from "./SignInPage/SignInPage";
+import { DetailsPage } from "./DetailsPage/DetailsPage";
 
-export { HomePage, NotFoundPage, SettingsPage, FavoritesPage, TrendsPage, SignInPage };
+export { HomePage, NotFoundPage, SettingsPage, FavoritesPage, TrendsPage, SignInPage, DetailsPage };
