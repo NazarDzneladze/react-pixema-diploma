@@ -18,24 +18,15 @@ const StyledMainContent = styled.div`
   }
 
   ${Breakpoint.XXL} {
-	column-gap: 42px;
+    column-gap: 42px;
     grid-template-columns: 1fr auto;
     grid-template-rows: auto 1fr;
-  }
-`;
-
-const PixemaIconLink = styled(Link)`
-  place-self: center start;
-
-  path:nth-child(n + 4) {
-    fill: ${Color.WHITE_THEME};
   }
 `;
 
 const Search = styled(Input)`
   width: 100%;
   height: 100%;
-  padding: 16px 50px 16px 20px;
 `;
 
 const Container = styled.div`
@@ -45,8 +36,8 @@ const Container = styled.div`
     grid-column: span 3;
   }
 
-  ${Breakpoint.XXL}{
-	grid-column: span 2;
+  ${Breakpoint.XXL} {
+    grid-column: span 2;
   }
 `;
 
@@ -68,4 +59,4 @@ const SearchWrapper = styled.div`
   }
 `;
 
-export { StyledMainContent, PixemaIconLink, Container, Search, SearchWrapper };
+export { StyledMainContent, Container, Search, SearchWrapper };
