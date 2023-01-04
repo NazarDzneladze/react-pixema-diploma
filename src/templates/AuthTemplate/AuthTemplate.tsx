@@ -1,7 +1,8 @@
+import { PixemaLogo } from "components";
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { useAppSelector } from "store";
-import { StyledAuthTemplate } from "./styles";
+import { CopyrightText, StyledAuthTemplate } from "./styles";
 
 export const AuthTemplate = () => {
   const { currentTheme } = useAppSelector((state) => state.theme);
@@ -11,7 +12,9 @@ export const AuthTemplate = () => {
 
   return (
     <StyledAuthTemplate>
+      <PixemaLogo />
       <Outlet />
+      <CopyrightText>© All Rights Reserved</CopyrightText>
     </StyledAuthTemplate>
   );
 };
