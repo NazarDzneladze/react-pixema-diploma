@@ -1,3 +1,4 @@
+import { useAppSelector } from "store";
 import { StyledInput } from "./styles";
 
 interface IProps {
