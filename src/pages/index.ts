@@ -5,5 +5,15 @@ import { FavoritesPage } from "./FavoritesPage/FavoritesPage";
 import { TrendsPage } from "./TrendsPage/TrendsPage";
 import { SignInPage } from "./SignInPage/SignInPage";
 import { DetailsPage } from "./DetailsPage/DetailsPage";
+import { SignUpPage } from "./SignUpPage/SignUpPage";
 
-export { HomePage, NotFoundPage, SettingsPage, FavoritesPage, TrendsPage, SignInPage, DetailsPage };
+export {
+  HomePage,
+  NotFoundPage,
+  SettingsPage,
+  FavoritesPage,
+  TrendsPage,
+  SignInPage,
+  DetailsPage,
+  SignUpPage,
+};
