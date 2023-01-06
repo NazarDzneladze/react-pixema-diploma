@@ -11,6 +11,7 @@ const StyledSignUpForm = styled.form`
   width: clamp(272px, 100%, 574px);
 
   background-color: ${Color.DARK};
+  border-radius: 10px;
   color: white;
 
   ${Breakpoint.XXS} {
@@ -28,7 +29,7 @@ const Title = styled.h3`
 
 const FormFields = styled.div`
   display: grid;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(4, auto);
   row-gap: 24px;
 `;
 
@@ -42,19 +43,17 @@ const FormFooter = styled.div`
   display: grid;
   grid-template-rows: auto auto;
   row-gap: 32px;
-
-  button {
-    padding: 16px 10px 16px;
-
-    background-color: ${Color.PRIMARY};
-    border: none;
-    border-radius: 10px;
-    color: ${Color.WHITE};
-  }
 `;
 
 const TextFooter = styled.p`
   place-self: center;
+
+  a {
+    color: ${Color.PRIMARY};
+  }
 `;
 
-export { StyledSignUpForm, Title, FormFields, FieldLabel, TextFooter, FormFooter };
+const ErrorMessage = styled.span`
+  color: red;
+`;
+export { StyledSignUpForm, Title, FormFields, FieldLabel, TextFooter, FormFooter, ErrorMessage };
