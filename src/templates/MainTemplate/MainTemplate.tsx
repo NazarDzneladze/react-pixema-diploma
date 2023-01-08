@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { StyledMainTemplate } from "./styles";
 import { useAppSelector } from "store";
-import { SideBar, MainContent } from "components";
+import { SideBar } from "components";
+import { Outlet } from "react-router-dom";
 
 export const MainTemplate = () => {
   const { currentTheme } = useAppSelector((state) => state.theme);
@@ -12,7 +13,7 @@ export const MainTemplate = () => {
   return (
     <StyledMainTemplate>
       <SideBar />
-      <MainContent />
+      <Outlet />
     </StyledMainTemplate>
   );
 };
