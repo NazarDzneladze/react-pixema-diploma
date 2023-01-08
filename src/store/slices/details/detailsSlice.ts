@@ -12,7 +12,7 @@ export const fetchMovieDetails = createAsyncThunk<
   IMovieDetailsAPI,
   string,
   { rejectValue: string }
->("homePage/fetchMovies", async (imdb: string, { rejectWithValue }) => {
+>("details/fetchMovieDetails", async (imdb, { rejectWithValue }) => {
   try {
     return await MovieAPI.getMovieByIMDB(imdb);
   } catch (error) {
@@ -21,13 +21,13 @@ export const fetchMovieDetails = createAsyncThunk<
 });
 
 const initialState: IMoviesState = {
-  movie: {},
+  movie: {} as IMovieDetailsAPI,
   isLoading: false,
   error: null,
 };
 
-const detailsPageSlice = createSlice({
-  name: "detailsPage",
+const detailsSlice = createSlice({
+  name: "details",
   initialState,
   reducers: {},
   extraReducers(builder) {
@@ -48,4 +48,4 @@ const detailsPageSlice = createSlice({
   },
 });
 
-export default detailsPageSlice.reducer;
+export default detailsSlice.reducer;

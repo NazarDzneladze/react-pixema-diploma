@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { MovieAPI } from "services";
-import { IMovieAPI } from "types";
+import { IMovie, IMovieAPI } from "types";
 
 interface IMoviesState {
   movies: IMovieAPI[];
@@ -9,12 +9,12 @@ interface IMoviesState {
 }
 
 export const fetchMovies = createAsyncThunk<IMovieAPI[], string, { rejectValue: string }>(
-  "homePage/fetchMovies",
+  "home/fetchMovies",
   async (movieName: string, { rejectWithValue }) => {
     try {
       return await MovieAPI.getMovieBySearch(movieName);
     } catch (error) {
-      return rejectWithValue("Error");
+      rejectWithValue("error");
     }
   },
 );
@@ -25,8 +25,8 @@ const initialState: IMoviesState = {
   error: null,
 };
 
-const homePageSlice = createSlice({
-  name: "homePage",
+const homeSlice = createSlice({
+  name: "home",
   initialState,
   reducers: {},
   extraReducers(builder) {
@@ -47,4 +47,13 @@ const homePageSlice = createSlice({
   },
 });
 
-export default homePageSlice.reducer;
+export default homeSlice.reducer;
+// try {
+// 	const movies = (await MovieAPI.getMovieBySearch(movieName)).Search;
+// 	const transformedMovies = transformMovies(movies);
+// 	console.log(transformedMovies);
+
+// 	return movies;
+//   } catch (error) {
+// 	return error;
+//   }

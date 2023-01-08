@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import themeReducer from "./theme/themeSlice";
-import homePageReducer from "./homePage/homePageSlice";
-import detailsPageReducer from "./detailsPage/detailsPageSlice";
-import accountReducer from "./account/accountSlice";
+import themeReducer from "./slices/theme/themeSlice";
+import homePageReducer from "./slices/home/homeSlice";
+import detailsPageReducer from "./slices/details/detailsSlice";
+import accountReducer from "./slices/account/accountSlice";
 
 export const store = configureStore({
   reducer: {
