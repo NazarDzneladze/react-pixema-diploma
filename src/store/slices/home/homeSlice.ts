@@ -48,12 +48,4 @@ const homeSlice = createSlice({
 });
 
 export default homeSlice.reducer;
-// try {
-// 	const movies = (await MovieAPI.getMovieBySearch(movieName)).Search;
-// 	const transformedMovies = transformMovies(movies);
-// 	console.log(transformedMovies);
 
-// 	return movies;
-//   } catch (error) {
-// 	return error;
-//   }
