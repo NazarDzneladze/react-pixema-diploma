@@ -4,18 +4,19 @@ import { Breakpoint, Color } from "ui";
 
 const StyledAuthTemplate = styled.div`
   display: grid;
-  /* grid-template-rows: auto 1fr auto; */
+  grid-template-rows: auto 1fr auto;
 
-  /* min-height: 100vh; */
+  min-height: 100vh;
 
   background-image: url(${AuthBackgroundImg});
   background-repeat: no-repeat;
   background-size: cover;
   background-color: ${Color.DARK_THEME};
-  background-position: top;
+  background-position: center;
+  background-attachment: fixed;
 
   ${Breakpoint.XXS} {
-    padding: 32px 24px 48px;
+    padding: 32px 17px 48px;
   }
 
   ${Breakpoint.MD} {
