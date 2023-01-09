@@ -1,18 +1,19 @@
 {
   "files": {
-    "main.js": "/react-pixema-diploma/static/js/main.266185e4.js",
+    "main.js": "/react-pixema-diploma/static/js/main.21b2c8b4.js",
     "static/media/auth-background.png": "/react-pixema-diploma/static/media/auth-background.ac3b7d52f053ac987825.png",
     "static/media/pixema-logo.svg": "/react-pixema-diploma/static/media/pixema-logo.a93fab9537ac658ff62c0b350ffe409f.svg",
-    "static/media/settings-icon.svg": "/react-pixema-diploma/static/media/settings-icon.c926780a7bc919f71b4db92c2bfca5e0.svg",
-    "static/media/trends-icon.svg": "/react-pixema-diploma/static/media/trends-icon.a9d460fabd9b1c3d46591a3c28db41e8.svg",
-    "static/media/home-icon.svg": "/react-pixema-diploma/static/media/home-icon.b6b597feb47125b1df11379c6685ac02.svg",
-    "static/media/favorites-icon.svg": "/react-pixema-diploma/static/media/favorites-icon.68d38c3ab7c84d17472cfab91cf588b8.svg",
+    "static/media/settings.svg": "/react-pixema-diploma/static/media/settings.c926780a7bc919f71b4db92c2bfca5e0.svg",
+    "static/media/imdb.svg": "/react-pixema-diploma/static/media/imdb.58444fd8d2f8f69876ca64b6261dde9a.svg",
+    "static/media/trends.svg": "/react-pixema-diploma/static/media/trends.a9d460fabd9b1c3d46591a3c28db41e8.svg",
+    "static/media/home.svg": "/react-pixema-diploma/static/media/home.b6b597feb47125b1df11379c6685ac02.svg",
+    "static/media/favorites.svg": "/react-pixema-diploma/static/media/favorites.68d38c3ab7c84d17472cfab91cf588b8.svg",
     "index.html": "/react-pixema-diploma/index.html",
-    "static/media/burger-icon.svg": "/react-pixema-diploma/static/media/burger-icon.5204f44ebae1fdbbb4df3061cf46b75a.svg",
-    "static/media/search-settings-icon.svg": "/react-pixema-diploma/static/media/search-settings-icon.a628ca3e3aa3b2601aba441b840aed98.svg",
-    "main.266185e4.js.map": "/react-pixema-diploma/static/js/main.266185e4.js.map"
+    "static/media/burger.svg": "/react-pixema-diploma/static/media/burger.5204f44ebae1fdbbb4df3061cf46b75a.svg",
+    "static/media/search-settings.svg": "/react-pixema-diploma/static/media/search-settings.a628ca3e3aa3b2601aba441b840aed98.svg",
+    "main.21b2c8b4.js.map": "/react-pixema-diploma/static/js/main.21b2c8b4.js.map"
   },
   "entrypoints": [
-    "static/js/main.266185e4.js"
+    "static/js/main.21b2c8b4.js"
   ]
 }
