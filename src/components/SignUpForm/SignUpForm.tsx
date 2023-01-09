@@ -21,7 +21,7 @@ import {
   getPasswordValidation,
 } from "./signUpValidation";
 
-interface IFormValues {
+interface ISignUpFormValues {
   name: string;
   email: string;
   password: string;
@@ -35,10 +35,10 @@ export const SignUpForm = () => {
     watch,
     formState: { errors },
     reset,
-  } = useForm<IFormValues>();
+  } = useForm<ISignUpFormValues>();
   const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<IFormValues> = ({ email, password }) => {
+  const onSubmit: SubmitHandler<ISignUpFormValues> = ({ email, password }) => {
     const auth = getAuth(app);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
