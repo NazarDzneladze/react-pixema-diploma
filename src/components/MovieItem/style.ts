@@ -6,6 +6,7 @@ const StyledMovieItem = styled.li``;
 const MoviePoster = styled.img`
   height: 356px;
   width: 100%;
+  border-radius: 20px;
 `;
 
 const MovieTitle = styled.p`

@@ -27,9 +27,9 @@ export const router = createBrowserRouter(
         <Route path={ROUTE.NOT_FOUND} element={<NotFoundPage />} />
         <Route path={ROUTE.DETAILS} element={<DetailsPage />} />
       </Route>
-      <Route path={ROUTE.SIGN_UP} element={<AuthTemplate />}>
-        {/* <Route index element={<SignInPage />} /> */}
-        <Route index element={<SignUpPage />} />
+      <Route path="auth" element={<AuthTemplate />}>
+        <Route path={ROUTE.SIGN_UP} element={<SignUpPage />} />
+        <Route path={ROUTE.SIGN_IN} element={<SignInPage />} />
       </Route>
     </>,
   ),
