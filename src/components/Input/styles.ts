@@ -6,7 +6,7 @@ const StyledInput = styled.input`
 
   border-radius: 10px;
   background-color: ${Color.GRAPHITE};
-  border: 2px solid ${Color.LIGHT};
+  border: 1px solid ${Color.LIGHT};
   color: ${Color.WHITE_THEME};
 
   ::placeholder {
