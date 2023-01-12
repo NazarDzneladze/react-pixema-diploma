@@ -2,7 +2,7 @@ import { css } from "styled-components";
 
 export const lightTheme = css`
   html[theme="light"] {
-    --white: #242426;
+    --white: #000000;
     --dark: #ffffff;
     --graphite: #ffffff;
   }
@@ -11,7 +11,7 @@ export const lightTheme = css`
 export const darkTheme = css`
   html[theme="dark"] {
     --white: #ffffff;
-    --dark: #242426;
+    --dark: #000000;
     --graphite: #323537;
   }
 `;
