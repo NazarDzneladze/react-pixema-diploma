@@ -21,7 +21,7 @@ export const getEmailValidation = () => {
 export const getPasswordValidation = () => {
   return {
     required: "Password is required. Please try again",
-    min: {
+    minLength: {
       value: 6,
       message: "Minimum 6 characters",
     },
@@ -31,7 +31,7 @@ export const getPasswordValidation = () => {
 export const getConfirmPasswordValidation = () => {
   return {
     required: "Please confirm password",
-    min: {
+    minLength: {
       value: 6,
       message: "Minimum 6 characters",
     },

@@ -91,7 +91,7 @@ export const SignUpForm = () => {
         </FieldLabel>
       </FormFields>
       <FormFooter>
-        <Button>Sign Up</Button>
+        <Button type="submit">Sign Up</Button>
         <TextFooter>
           Already have an account? <Link to={"../" + ROUTE.SIGN_IN}>Sign In</Link>
         </TextFooter>
