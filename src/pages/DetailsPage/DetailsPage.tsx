@@ -1,9 +1,17 @@
-import { IMDbIcon } from "assets";
+import { IMDbIcon, NextSlideIcon } from "assets";
 import { Header } from "components";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { transformMovieDetails } from "services";
-import { useAppDispatch, useAppSelector } from "store";
+import { fetchMovies, useAppDispatch, useAppSelector } from "store";
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  ButtonBack,
+  ButtonNext,
+  Image,
+} from "pure-react-carousel";
 import { fetchMovieDetails } from "store";
 import {
   DetailsContainer,
@@ -21,15 +29,20 @@ import {
   Plot,
   OtherDetails,
   Info,
+  Carousel,
 } from "./styles";
+import { useWindowSize } from "hooks";
 
 export const DetailsPage = () => {
   const dispatch = useAppDispatch();
+  const { width = 0 } = useWindowSize();
   const { movie } = useAppSelector((state) => state.details);
+  const { movies } = useAppSelector((state) => state.home);
   const { imdb = "" } = useParams();
 
   useEffect(() => {
     dispatch(fetchMovieDetails(imdb));
+    dispatch(fetchMovies("star wars"));
   }, [dispatch, imdb]);
 
   const {
@@ -89,6 +102,25 @@ export const DetailsPage = () => {
             <Info>Writers</Info>
             <Info>{writer}</Info>
           </OtherDetails>
+          <Carousel
+            naturalSlideHeight={357}
+            naturalSlideWidth={266}
+            totalSlides={movies.length}
+            visibleSlides={width >= 768 && width < 1440 ? 2 : width >= 1440 ? 4 : 1}
+          >
+            <ButtonBack>Back</ButtonBack>
+            <ButtonNext>
+              <NextSlideIcon />
+            </ButtonNext>
+            <Slider style={{ gridColumn: "span 2" }}>
+              {movies.map((movie, index) => (
+                <Slide index={index} key={movie.imdbID}>
+                  <Image hasMasterSpinner={false} src={movie.Poster} />
+                  <p>{movie.Title}</p>
+                </Slide>
+              ))}
+            </Slider>
+          </Carousel>
         </MovieInfo>
       </DetailsContainer>
     </StyledDetailsPage>
