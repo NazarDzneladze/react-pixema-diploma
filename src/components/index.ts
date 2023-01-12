@@ -9,8 +9,14 @@ import { MovieList } from "./MovieList/MovieList";
 import { PixemaLogo } from "./PixemaLogo/PixemaLogo";
 import { SignUpForm } from "./SignUpForm/SignUpForm";
 import { Header } from "./Header/Header";
+import { ThemeToggler } from "./ThemeToggler/ThemeToggler";
+import { ModalFiltersWindow } from "./ModalFiltersWindow/ModalFiltersWindow";
+import { Portal } from "./Portal/Portal";
 
 export {
+  Portal,
+  ModalFiltersWindow,
+  ThemeToggler,
   Header,
   SignUpForm,
   PixemaLogo,
