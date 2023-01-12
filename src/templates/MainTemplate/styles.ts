@@ -9,7 +9,10 @@ const StyledMainTemplate = styled.div`
   background-color: ${Color.DARK_THEME};
 
   ${Breakpoint.XXS} {
-    padding: 32px 24px 48px;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto;
+
+    padding: 32px 17px 48px;
   }
 
   ${Breakpoint.MD} {
