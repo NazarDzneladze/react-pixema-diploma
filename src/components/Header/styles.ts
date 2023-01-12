@@ -1,3 +1,4 @@
+import { StyledInput } from "components/Input/styles";
 import styled from "styled-components";
 import { Breakpoint } from "ui";
 
@@ -19,9 +20,7 @@ const StyledHeader = styled.header`
   }
 `;
 
-const Search = styled.input`
-  border: 1px solid green;
-
+const Search = styled(StyledInput)`
   ${Breakpoint.XXS} {
     grid-column: span 2;
     grid-row: 2/3;
