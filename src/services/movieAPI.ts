@@ -1,4 +1,5 @@
 import axios from "axios";
+import { IMovieDetailsAPI, IMovieResponse } from "types";
 
 export class MovieAPI {
   private static readonly BASE_URL = process.env.REACT_APP_SERVICES_MOVIE_API_BASE_URL;
@@ -13,9 +14,9 @@ export class MovieAPI {
       type: type,
     };
 
-    const { data } = await this.API.get("", { params });
+    const { data } = await this.API.get<IMovieResponse>("", { params });
 
-    return data.Search;
+    return data;
   }
 
   static async getMovieByIMDB(imdb: string) {
@@ -24,7 +25,7 @@ export class MovieAPI {
       plot: "full",
     };
 
-    const { data } = await this.API.get("", { params });
+    const { data } = await this.API.get<IMovieDetailsAPI>("", { params });
 
     return data;
   }
