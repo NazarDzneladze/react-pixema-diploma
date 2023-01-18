@@ -17,6 +17,7 @@ const StyledHeader = styled.header`
 
   ${Breakpoint.XXL} {
     grid-template-columns: 1fr auto;
+    column-gap: 40px;
   }
 `;
 
