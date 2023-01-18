@@ -1,20 +1,28 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { MovieAPI } from "services";
-import { IMovie, IMovieAPI } from "types";
+import axios from "axios";
+import { MovieAPI, transformMovies } from "services";
+import { IMovie, IMovieAPI, IMovieResponse } from "types";
 
 interface IMoviesState {
-  movies: IMovieAPI[];
+  movies: IMovie[];
   isLoading: boolean;
   error: null | string;
 }
 
-export const fetchMovies = createAsyncThunk<IMovieAPI[], string, { rejectValue: string }>(
+export const fetchMovies = createAsyncThunk<IMovie[], string, { rejectValue: string }>(
   "home/fetchMovies",
-  async (movieName: string, { rejectWithValue }) => {
+  async (movieName, { rejectWithValue }) => {
     try {
-      return await MovieAPI.getMovieBySearch(movieName);
+      const movies = await MovieAPI.getMovieBySearch(movieName);
+      const transformedMovies = transformMovies(movies.Search);
+
+      return transformedMovies;
     } catch (error) {
-      rejectWithValue("error");
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.message);
+      } else {
+        return rejectWithValue("An unexpected error occurred");
+      }
     }
   },
 );
@@ -48,4 +56,3 @@ const homeSlice = createSlice({
 });
 
 export default homeSlice.reducer;
-

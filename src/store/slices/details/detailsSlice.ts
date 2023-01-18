@@ -1,27 +1,34 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { MovieAPI } from "services";
-import { IMovieDetailsAPI } from "types";
+import axios from "axios";
+import { MovieAPI, transformMovieDetails } from "services";
+import { IMovieDetails } from "types";
 
 interface IMoviesState {
-  movie: IMovieDetailsAPI;
+  movieDetails: IMovieDetails;
   isLoading: boolean;
   error: null | string;
 }
 
-export const fetchMovieDetails = createAsyncThunk<
-  IMovieDetailsAPI,
-  string,
-  { rejectValue: string }
->("details/fetchMovieDetails", async (imdb, { rejectWithValue }) => {
-  try {
-    return await MovieAPI.getMovieByIMDB(imdb);
-  } catch (error) {
-    return rejectWithValue("Error");
-  }
-});
+export const fetchMovieDetails = createAsyncThunk<IMovieDetails, string, { rejectValue: string }>(
+  "details/fetchMovieDetails",
+  async (imdb, { rejectWithValue }) => {
+    try {
+      const movieDetails = await MovieAPI.getMovieByIMDB(imdb);
+      const transformedMovieDetails = transformMovieDetails(movieDetails);
+
+      return transformedMovieDetails;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.message);
+      } else {
+        return rejectWithValue("An unexpected error occurred");
+      }
+    }
+  },
+);
 
 const initialState: IMoviesState = {
-  movie: {} as IMovieDetailsAPI,
+  movieDetails: {} as IMovieDetails,
   isLoading: false,
   error: null,
 };
@@ -37,7 +44,7 @@ const detailsSlice = createSlice({
     });
     builder.addCase(fetchMovieDetails.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.movie = action.payload;
+      state.movieDetails = action.payload;
     });
     builder.addCase(fetchMovieDetails.rejected, (state, action) => {
       if (action.payload) {
