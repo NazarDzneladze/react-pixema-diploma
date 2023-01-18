@@ -12,8 +12,12 @@ import { Header } from "./Header/Header";
 import { ThemeToggler } from "./ThemeToggler/ThemeToggler";
 import { ModalFiltersWindow } from "./ModalFiltersWindow/ModalFiltersWindow";
 import { Portal } from "./Portal/Portal";
+import { ModalWrapper } from "./ModalWrapper/ModalWrapper";
+import { AuthDetails } from "./AuthDetails/AuthDetails";
 
 export {
+  AuthDetails,
+  ModalWrapper,
   Portal,
   ModalFiltersWindow,
   ThemeToggler,
