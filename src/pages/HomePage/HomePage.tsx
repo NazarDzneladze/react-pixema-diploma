@@ -13,12 +13,10 @@ export const HomePage = () => {
     dispatch(fetchMovies("indiana jones"));
   }, [dispatch]);
 
-  const transformedMovies = transformMovies(movies);
-
   return (
     <StyledHomePage>
       <Header />
-      <MovieList movies={transformedMovies} />
+      <MovieList movies={movies} />
     </StyledHomePage>
   );
 };

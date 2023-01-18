@@ -2,7 +2,6 @@ import { IMDbIcon, NextSlideIcon } from "assets";
 import { Header } from "components";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { transformMovieDetails } from "services";
 import { fetchMovies, useAppDispatch, useAppSelector } from "store";
 import {
   CarouselProvider,
@@ -36,13 +35,12 @@ import { useWindowSize } from "hooks";
 export const DetailsPage = () => {
   const dispatch = useAppDispatch();
   const { width = 0 } = useWindowSize();
-  const { movie } = useAppSelector((state) => state.details);
+  const { movieDetails } = useAppSelector((state) => state.details);
   const { movies } = useAppSelector((state) => state.home);
   const { imdb = "" } = useParams();
 
   useEffect(() => {
-    dispatch(fetchMovieDetails(imdb));
-    dispatch(fetchMovies("star wars"));
+    dispatch(fetchMovieDetails(imdb)).then(() => dispatch(fetchMovies("star wars")));
   }, [dispatch, imdb]);
 
   const {
@@ -60,7 +58,7 @@ export const DetailsPage = () => {
     imdbRating,
     poster,
     imdbID,
-  } = transformMovieDetails(movie);
+  } = movieDetails;
 
   return (
     <StyledDetailsPage>
@@ -115,8 +113,8 @@ export const DetailsPage = () => {
             <Slider style={{ gridColumn: "span 2" }}>
               {movies.map((movie, index) => (
                 <Slide index={index} key={movie.imdbID}>
-                  <Image hasMasterSpinner={false} src={movie.Poster} />
-                  <p>{movie.Title}</p>
+                  <Image hasMasterSpinner={false} src={movie.poster} />
+                  <p>{movie.title}</p>
                 </Slide>
               ))}
             </Slider>
