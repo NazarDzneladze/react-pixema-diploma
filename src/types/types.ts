@@ -12,17 +12,10 @@ export interface IMovieResponse {
   Response: string;
 }
 
-export interface IMovie {
-  title: string;
-  year: string;
-  imdbID: string;
-  type: string;
-  poster: string;
-}
-
 export interface IMovieDetailsAPI {
   Title: string;
   Year: string;
+  Rated: string;
   Released: string;
   Runtime: string;
   Genre: string;
@@ -30,11 +23,34 @@ export interface IMovieDetailsAPI {
   Writer: string;
   Actors: string;
   Plot: string;
-  BoxOffice: string;
+  Language: string;
   Country: string;
-  imdbRating: string;
+  Awards: string;
   Poster: string;
+  Ratings: IRating[];
+  Metascore: string;
+  imdbRating: string;
+  imdbVotes: string;
   imdbID: string;
+  Type: string;
+  DVD: string;
+  BoxOffice: string;
+  Production: string;
+  Website: string;
+  Response: string;
+}
+
+export interface IRating {
+  Source: string;
+  Value: string;
+}
+
+export interface IMovie {
+  title: string;
+  year: string;
+  imdbID: string;
+  type: string;
+  poster: string;
 }
 
 export interface IMovieDetails {
