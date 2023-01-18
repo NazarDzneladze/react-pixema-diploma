@@ -8,8 +8,10 @@ import { ReactComponent as SettingsIcon } from "./icons/settings.svg";
 import { ReactComponent as SearchIcon } from "./icons/search-settings.svg";
 import { ReactComponent as IMDbIcon } from "./icons/imdb.svg";
 import { ReactComponent as NextSlideIcon } from "./icons/next-arrow.svg";
+import { ReactComponent as CloseIcon } from "./icons/close.svg";
 
 export {
+  CloseIcon,
   PixemaIcon,
   AuthBackgroundImg,
   BurgerIcon,
