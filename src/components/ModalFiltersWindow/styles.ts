@@ -2,16 +2,85 @@ import styled from "styled-components";
 import { Color } from "ui";
 
 const StyledModalFiltersWindow = styled.div`
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(4, auto);
 
   width: clamp(320px, 100%, 518px);
-  padding: 40px;
+  padding: 48px 40px 48px;
 
   background-color: ${Color.DARK};
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 `;
 
-export { StyledModalFiltersWindow };
+const FiltersHeader = styled.div`
+  place-self: start stretch;
+  grid-column: 1 / 3;
+
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: space-between;
+
+  button {
+    padding: 0;
+
+    background: none;
+  }
+`;
+
+const Title = styled.h3`
+  color: ${Color.WHITE};
+`;
+
+const SubTitle = styled.h4`
+  color: ${Color.WHITE};
+`;
+
+const Tab = styled.button`
+  place-self: start stretch;
+
+  padding: 16px;
+
+  border: 2px solid ${Color.LIGHT};
+`;
+
+const SortByContainer = styled.div`
+  grid-column: 1 / 3;
+
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: repeat(2, auto);
+
+  ${SubTitle} {
+    grid-column: 1 / 3;
+    place-self: start;
+  }
+
+  ${Tab}:nth-of-type(1) {
+    border-radius: 10px 0px 0px 10px;
+    border-right: none;
+    background-color: ${Color.DARK};
+  }
+
+  ${Tab}:nth-of-type(2) {
+    border-radius: 0px 10px 10px 0px;
+    border-left: none;
+  }
+`;
+
+const FilterstForm = styled.form`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(6, auto);
+`;
+
+export {
+  StyledModalFiltersWindow,
+  Title,
+  SubTitle,
+  FiltersHeader,
+  SortByContainer,
+  Tab,
+  FilterstForm,
+};
