@@ -33,9 +33,17 @@ export const SignUpForm = () => {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isValid },
     reset,
-  } = useForm<ISignUpFormValues>();
+  } = useForm<ISignUpFormValues>({
+    mode: "onChange",
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+  });
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<ISignUpFormValues> = ({ email, password }) => {
@@ -43,13 +51,13 @@ export const SignUpForm = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log(userCredential);
+        navigate(ROUTE.HOME);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
       });
     reset();
-    navigate(ROUTE.HOME);
   };
 
   return (

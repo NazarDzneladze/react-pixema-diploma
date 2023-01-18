@@ -5,7 +5,7 @@ interface IProps {
   children: ReactNode;
   $searchStyle?: boolean;
   type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
-  onClick?: () => {};
+  onClick?: () => void;
 }
 
 export const Button = ({ children, $searchStyle, onClick, type = "submit" }: IProps) => {
