@@ -14,8 +14,10 @@ import { ModalFiltersWindow } from "./ModalFiltersWindow/ModalFiltersWindow";
 import { Portal } from "./Portal/Portal";
 import { ModalWrapper } from "./ModalWrapper/ModalWrapper";
 import { AuthDetails } from "./AuthDetails/AuthDetails";
+import { Spinner } from "./Spinner/Spinner";
 
 export {
+  Spinner,
   AuthDetails,
   ModalWrapper,
   Portal,
