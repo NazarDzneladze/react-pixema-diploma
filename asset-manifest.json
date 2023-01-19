@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-pixema-diploma/static/css/main.495d56c1.css",
-    "main.js": "/react-pixema-diploma/static/js/main.3ef9c93e.js",
+    "main.js": "/react-pixema-diploma/static/js/main.92149cdd.js",
     "static/media/auth-background.png": "/react-pixema-diploma/static/media/auth-background.ac3b7d52f053ac987825.png",
     "static/media/pixema-logo.svg": "/react-pixema-diploma/static/media/pixema-logo.a93fab9537ac658ff62c0b350ffe409f.svg",
     "static/media/settings.svg": "/react-pixema-diploma/static/media/settings.c926780a7bc919f71b4db92c2bfca5e0.svg",
@@ -15,10 +15,10 @@
     "static/media/next-arrow.svg": "/react-pixema-diploma/static/media/next-arrow.f58780250c373f06521d450484861c1a.svg",
     "static/media/search-settings.svg": "/react-pixema-diploma/static/media/search-settings.a628ca3e3aa3b2601aba441b840aed98.svg",
     "main.495d56c1.css.map": "/react-pixema-diploma/static/css/main.495d56c1.css.map",
-    "main.3ef9c93e.js.map": "/react-pixema-diploma/static/js/main.3ef9c93e.js.map"
+    "main.92149cdd.js.map": "/react-pixema-diploma/static/js/main.92149cdd.js.map"
   },
   "entrypoints": [
     "static/css/main.495d56c1.css",
-    "static/js/main.3ef9c93e.js"
+    "static/js/main.92149cdd.js"
   ]
 }
