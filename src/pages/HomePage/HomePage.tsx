@@ -1,13 +1,12 @@
-import { Header, MovieList } from "components";
+import { Header, MovieList, Spinner } from "components";
 import { useEffect } from "react";
-import { transformMovies } from "services";
 import { useAppDispatch, useAppSelector } from "store";
 import { fetchMovies } from "store";
 import { StyledHomePage } from "./style";
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();
-  const { movies } = useAppSelector((state) => state.home);
+  const { movies, isLoading, error } = useAppSelector((state) => state.home);
 
   useEffect(() => {
     dispatch(fetchMovies("indiana jones"));
@@ -16,7 +15,9 @@ export const HomePage = () => {
   return (
     <StyledHomePage>
       <Header />
-      <MovieList movies={movies} />
+      {isLoading && <Spinner />}
+      {error && <span>{error}</span>}
+      {movies && movies.length > 0 && <MovieList movies={movies} />}
     </StyledHomePage>
   );
 };
