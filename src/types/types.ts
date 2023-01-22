@@ -6,12 +6,6 @@ export interface IMovieAPI {
   Poster: string;
 }
 
-export interface IMovieResponse {
-  Search: IMovieAPI[];
-  totalResults: string;
-  Response: string;
-}
-
 export interface IMovieDetailsAPI {
   Title: string;
   Year: string;
@@ -74,5 +68,5 @@ export interface IUserInfo {
   name: string;
   email: string;
   password: string;
-  confirmPassword: string;
+  id: string;
 }
