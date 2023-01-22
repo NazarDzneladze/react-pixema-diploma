@@ -7,12 +7,12 @@ interface IProps {
   movie: IMovie;
 }
 
-export const MovieItem = ({ movie }: IProps) => {
+export const MovieItem = ({ movie: { imdbID, poster, title } }: IProps) => {
   return (
     <StyledMovieItem>
-      <Link to={generatePath(ROUTE.DETAILS, { imdb: movie.imdbID })}>
-        <MoviePoster src={movie.poster} />
-        <MovieTitle>{movie.title}</MovieTitle>
+      <Link to={generatePath(ROUTE.DETAILS, { imdb: imdbID })}>
+        <MoviePoster src={poster} alt={title} />
+        <MovieTitle>{title}</MovieTitle>
       </Link>
     </StyledMovieItem>
   );
