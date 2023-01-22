@@ -3,6 +3,7 @@ import themeReducer from "./slices/theme/themeSlice";
 import homeReducer from "./slices/home/homeSlice";
 import detailsReducer from "./slices/details/detailsSlice";
 import accountReducer from "./slices/account/accountSlice";
+import favoritesReducer from "./slices/favorites/favoritesSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     home: homeReducer,
     details: detailsReducer,
     account: accountReducer,
+    favorites: favoritesReducer,
   },
 });
 
