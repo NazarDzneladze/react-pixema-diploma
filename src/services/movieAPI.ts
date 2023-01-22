@@ -1,5 +1,6 @@
 import axios from "axios";
-import { IMovieDetailsAPI, IMovieResponse } from "types";
+import { IMovieDetailsAPI } from "types";
+import { IMovieResponse } from "./types";
 
 export class MovieAPI {
   private static readonly BASE_URL = process.env.REACT_APP_SERVICES_MOVIE_API_BASE_URL;
