@@ -86,6 +86,7 @@ const MovieTitle = styled.h3``;
 const DetailsPreview = styled.div`
   display: grid;
   grid-template-rows: 1fr auto;
+  row-gap: 32px;
 
   ${Breakpoint.XXS} {
     place-self: center;

@@ -1,8 +1,15 @@
-import { IMDbIcon, NextSlideIcon } from "assets";
+import { FavoritesIcon, IMDbIcon, NextSlideIcon } from "assets";
 import { Header, Spinner } from "components";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { fetchMovies, useAppDispatch, useAppSelector } from "store";
+import {
+  addFavorite,
+  fetchMovies,
+  selectMovieDetails,
+  selectMovies,
+  useAppDispatch,
+  useAppSelector,
+} from "store";
 import {
   CarouselProvider,
   Slider,
@@ -35,13 +42,17 @@ import { useWindowSize } from "hooks";
 export const DetailsPage = () => {
   const dispatch = useAppDispatch();
   const { width = 0 } = useWindowSize();
-  const { movieDetails, error, isLoading } = useAppSelector((state) => state.details);
-  const { movies } = useAppSelector((state) => state.home);
+  const { movieDetails, error, isLoading } = useAppSelector(selectMovieDetails);
+  const { movies } = useAppSelector(selectMovies);
   const { imdb = "" } = useParams();
 
   useEffect(() => {
     dispatch(fetchMovieDetails(imdb)).then(() => dispatch(fetchMovies("star wars")));
   }, [dispatch, imdb]);
+
+  const handleAddFavorite = () => {
+    dispatch(addFavorite(movieDetails));
+  };
 
   const {
     title,
@@ -84,6 +95,9 @@ export const DetailsPage = () => {
           </DetailsHeader>
           <DetailsPreview>
             <MoviePoster src={poster} />
+            <button onClick={handleAddFavorite}>
+              <FavoritesIcon />
+            </button>
           </DetailsPreview>
           <MovieInfo>
             <Plot>{plot}</Plot>
