@@ -13,13 +13,9 @@ import {
   Title,
   ErrorMessage,
 } from "./styles";
-import { app } from "../../firebase";
-import {
-  getConfirmPasswordValidation,
-  getEmailValidation,
-  getNameValidation,
-  getPasswordValidation,
-} from "./signUpValidation";
+import { signUp, useAppDispatch, useAppSelector } from "store";
+import { getFormValidation } from "utils";
+import { FormFieldName } from "config";
 
 interface ISignUpFormValues {
   name: string;
@@ -44,20 +40,14 @@ export const SignUpForm = () => {
       confirmPassword: "",
     },
   });
+  const dispath = useAppDispatch();
+  const { user } = useAppSelector((state) => state.account);
+  console.log(user);
+
   const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<ISignUpFormValues> = ({ email, password }) => {
-    const auth = getAuth(app);
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log(userCredential);
-        navigate(ROUTE.HOME);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
-    reset();
+  const onSubmit: SubmitHandler<ISignUpFormValues> = ({ email, password, name }) => {
+    dispath(signUp({ email, password, name })).then((data) => console.log(data));
   };
 
   return (
@@ -66,19 +56,26 @@ export const SignUpForm = () => {
       <FormFields>
         <FieldLabel>
           Name
-          <StyledInput placeholder="Your name" {...register("name", getNameValidation())} />
+          <StyledInput
+            placeholder="Your name"
+            {...register("name", getFormValidation(FormFieldName.NAME))}
+          />
           {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
         </FieldLabel>
         <FieldLabel>
           Email
-          <StyledInput placeholder="Your email" {...register("email", getEmailValidation())} />
+          <StyledInput
+            placeholder="Your email"
+            type="email"
+            {...register("email", getFormValidation(FormFieldName.EMAIL))}
+          />
           {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
         </FieldLabel>
         <FieldLabel>
           Password
           <StyledInput
             placeholder="Your password"
-            {...register("password", getPasswordValidation())}
+            {...register("password", getFormValidation(FormFieldName.PASSWORD))}
           />
           {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
         </FieldLabel>
@@ -87,7 +84,7 @@ export const SignUpForm = () => {
           <StyledInput
             placeholder="Confirm password"
             {...register("confirmPassword", {
-              ...getConfirmPasswordValidation(),
+              ...getFormValidation(FormFieldName.CONFIRM_PASSWORD),
               validate: (val: string) => {
                 if (watch("password") != val) {
                   return "Your passwords do no match";
