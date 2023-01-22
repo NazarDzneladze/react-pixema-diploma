@@ -1,12 +1,14 @@
-import { auth } from "../../firebase";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut, getAuth } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { StyledAuthDetails } from "./styles";
+import { useAppSelector } from "store";
+import { FullUserName, StyledAuthDetails, UserInfoContainer, UserNameInitials } from "./styles";
 
 export const AuthDetails = () => {
   const [authUser, setAuthUser] = useState<any>("");
+  const { user } = useAppSelector((state) => state.account);
 
   useEffect(() => {
+    const auth = getAuth();
     const listen = onAuthStateChanged(auth, (user: any) => {
       if (user) {
         setAuthUser(user);
@@ -21,13 +23,17 @@ export const AuthDetails = () => {
   }, []);
 
   const handleSignOut = () => {
+    const auth = getAuth();
     signOut(auth);
   };
 
   return (
     <StyledAuthDetails>
-      {authUser ? <span>{authUser.email}</span> : <span>sign in</span>}
-      <button onClick={handleSignOut}>sign out</button>
+      <UserInfoContainer>
+        <UserNameInitials>TEST</UserNameInitials>
+        <FullUserName>TEST</FullUserName>
+      </UserInfoContainer>
     </StyledAuthDetails>
   );
 };
+
