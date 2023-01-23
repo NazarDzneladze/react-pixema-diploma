@@ -51,10 +51,19 @@ export const DetailsPage = () => {
   }, [dispatch, imdb]);
 
   const handleAddFavorite = () => {
-    dispatch(addFavorite(movieDetails));
+    const movieItem = {
+      title: title,
+      year: year,
+      imdbID: imdbID,
+      poster: poster,
+      type: type,
+    };
+
+    dispatch(addFavorite(movieItem));
   };
 
   const {
+    type,
     title,
     year,
     released,
