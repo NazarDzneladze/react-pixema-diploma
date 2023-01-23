@@ -9,8 +9,12 @@ import { ReactComponent as SearchIcon } from "./icons/search-settings.svg";
 import { ReactComponent as IMDbIcon } from "./icons/imdb.svg";
 import { ReactComponent as NextSlideIcon } from "./icons/next-arrow.svg";
 import { ReactComponent as CloseIcon } from "./icons/close.svg";
+import { ReactComponent as FavoriteFilmIcon } from "./icons/favorite-film.svg";
+import { ReactComponent as EmptyFavoritesIcon } from "./icons/empty-favorites.svg";
 
 export {
+  EmptyFavoritesIcon,
+  FavoriteFilmIcon,
   CloseIcon,
   PixemaIcon,
   AuthBackgroundImg,
