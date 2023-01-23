@@ -62,6 +62,7 @@ export interface IMovieDetails {
   imdbRating: string;
   poster: string;
   imdbID: string;
+  type: string;
 }
 
 export interface IUserInfo {
