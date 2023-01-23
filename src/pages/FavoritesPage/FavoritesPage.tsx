@@ -1,6 +1,7 @@
+import { EmptyFavoritesIcon } from "assets";
 import { Header, MovieList } from "components";
 import { selectFavoritesMovies, useAppSelector } from "store";
-import { StyledFavoritesPage } from "./styles";
+import { EmptyFavoritesContainer, EmptyText, StyledFavoritesPage } from "./styles";
 
 export const FavoritesPage = () => {
   const { favoritesMovies } = useAppSelector(selectFavoritesMovies);
@@ -8,7 +9,14 @@ export const FavoritesPage = () => {
   return (
     <StyledFavoritesPage>
       <Header />
-      <MovieList movies={favoritesMovies} />
+      {favoritesMovies.length ? (
+        <MovieList movies={favoritesMovies} />
+      ) : (
+        <EmptyFavoritesContainer>
+          <EmptyFavoritesIcon />
+          <EmptyText>Oops, nothing here yet. </EmptyText>
+        </EmptyFavoritesContainer>
+      )}
     </StyledFavoritesPage>
   );
 };
