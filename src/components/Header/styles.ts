@@ -1,5 +1,5 @@
-import { StyledInput } from "components/Input/styles";
 import styled from "styled-components";
+import { StyledInput } from "components/Input/styles";
 import { Breakpoint } from "ui";
 
 const StyledHeader = styled.header`

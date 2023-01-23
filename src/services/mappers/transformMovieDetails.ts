@@ -16,5 +16,6 @@ export const transformMovieDetails = (movie: IMovieDetailsAPI): IMovieDetails =>
     imdbRating: movie.imdbRating,
     poster: movie.Poster,
     imdbID: movie.imdbID,
+    type: movie.Type,
   };
 };

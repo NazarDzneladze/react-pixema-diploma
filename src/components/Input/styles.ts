@@ -12,6 +12,11 @@ const StyledInput = styled.input`
   ::placeholder {
     color: ${Color.SECONDARY};
   }
+
+  &:focus {
+    outline: none;
+    border-color: ${Color.PRIMARY};
+  }
 `;
 
 export { StyledInput };
