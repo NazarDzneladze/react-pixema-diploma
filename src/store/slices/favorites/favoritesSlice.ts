@@ -1,12 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IMovie } from "types";
 
+const initFavorites = () => {
+  const favorites = localStorage.getItem("favorites");
+  if (favorites !== null) {
+    return JSON.parse(favorites);
+  } else {
+    localStorage.setItem("favorites", JSON.stringify([]));
+    return [];
+  }
+};
+
+const setFavoritesMovies = (favoritesMovies: IMovie[]) => {
+  localStorage.setItem("favorites", JSON.stringify(favoritesMovies));
+};
+
 interface IFavoritesState {
   favoritesMovies: IMovie[];
 }
 
 const initialState: IFavoritesState = {
-  favoritesMovies: [],
+  favoritesMovies: initFavorites(),
 };
 
 const favoritesSlice = createSlice({
@@ -16,7 +30,14 @@ const favoritesSlice = createSlice({
     addFavorite(state, { payload }) {
       if (!state.favoritesMovies.find((favorite) => favorite.imdbID === payload.imdbID)) {
         state.favoritesMovies.push(payload);
+        setFavoritesMovies(state.favoritesMovies);
       }
+    },
+    removeFavorite(state, { payload }) {
+      state.favoritesMovies = state.favoritesMovies.filter(
+        (favoriteMovie) => favoriteMovie.imdbID !== payload.imdbID,
+      );
+      setFavoritesMovies(state.favoritesMovies);
     },
   },
 });
