@@ -9,8 +9,18 @@ const MoviePoster = styled.img`
   border-radius: 20px;
 `;
 
+const PosterContainer = styled.div`
+  position: relative;
+
+  svg {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+`;
+
 const MovieTitle = styled.p`
   color: ${Color.WHITE_THEME};
 `;
 
-export { StyledMovieItem, MoviePoster, MovieTitle };
+export { StyledMovieItem, MoviePoster, MovieTitle, PosterContainer };
