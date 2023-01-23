@@ -3,7 +3,9 @@ import { Color } from "ui";
 
 const StyledThemeToggler = styled.label`
   --active-color: ${Color.PRIMARY};
-  --inactive-color: ${Color.LIGHT};
+  --inactive-color: ${Color.SECONDARY};
+  --hover-active-color: ${Color.PRIMARY_LIGHT};
+  --hover-inactive-color: ${Color.LIGHT};
   --rail-height: 1.5rem;
   --rail-ratio: 1.8;
   --inset: 2px;
@@ -34,12 +36,16 @@ const ToggleInput = styled.input`
 
   &:before {
     content: "";
+
     position: absolute;
+    z-index: 0;
+
     width: 100%;
     height: 100%;
+
     background-color: var(--inactive-color);
     border-radius: var(--rail-height);
-    z-index: 0;
+
     transition: all 100ms ease;
   }
 

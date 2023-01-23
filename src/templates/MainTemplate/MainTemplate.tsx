@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { StyledMainTemplate } from "./styles";
-import { useAppSelector } from "store";
+import { selectTheme, useAppSelector } from "store";
 import { SideBar } from "components";
 import { Outlet } from "react-router-dom";
 
 export const MainTemplate = () => {
-  const { currentTheme } = useAppSelector((state) => state.theme);
+  const { currentTheme } = useAppSelector(selectTheme);
   useEffect(() => {
     document.documentElement.setAttribute("theme", currentTheme);
   }, [currentTheme]);

@@ -1,9 +1,9 @@
-import { toggleTheme, useAppDispatch, useAppSelector } from "store";
+import { selectTheme, toggleTheme, useAppDispatch, useAppSelector } from "store";
 import { StyledThemeToggler, ToggleInput } from "./styles";
 
 export const ThemeToggler = () => {
   const dispatch = useAppDispatch();
-  const { currentTheme } = useAppSelector((store) => store.theme);
+  const { currentTheme } = useAppSelector(selectTheme);
 
   const handleTheme = () => {
     dispatch(toggleTheme());

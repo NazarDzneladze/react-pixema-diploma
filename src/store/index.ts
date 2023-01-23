@@ -8,8 +8,10 @@ import { selectFavoritesMovies } from "./selectors/favoritesSelector";
 import { addFavorite } from "./slices/favorites/favoritesSlice";
 import { selectMovieDetails } from "./selectors/movieDetailsSelector";
 import { selectMovies } from "./selectors/moviesSelector";
+import { selectTheme } from "./selectors/themeSelector";
 
 export {
+  selectTheme,
   selectMovies,
   selectMovieDetails,
   addFavorite,
