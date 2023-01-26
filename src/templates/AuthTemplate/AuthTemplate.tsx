@@ -1,11 +1,11 @@
 import { PixemaLogo } from "components";
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { useAppSelector } from "store";
+import { selectTheme, useAppSelector } from "store";
 import { CopyrightText, StyledAuthTemplate } from "./styles";
 
 export const AuthTemplate = () => {
-  const { currentTheme } = useAppSelector((state) => state.theme);
+  const { currentTheme } = useAppSelector(selectTheme);
   useEffect(() => {
     document.documentElement.setAttribute("theme", currentTheme);
   }, [currentTheme]);

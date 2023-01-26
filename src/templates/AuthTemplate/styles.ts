@@ -10,10 +10,10 @@ const StyledAuthTemplate = styled.div`
 
   background-image: url(${AuthBackgroundImg});
   background-repeat: no-repeat;
-  background-size: cover;
+  /* background-size: cover; */
   background-color: ${Color.DARK_THEME};
-  background-position: center;
-  background-attachment: fixed;
+  /* background-position: top center;
+  background-attachment: fixed; */
 
   ${Breakpoint.XXS} {
     padding: 32px 17px 48px;
