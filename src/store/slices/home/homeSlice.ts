@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { MovieAPI, transformMovies } from "services";
 import { IMovie } from "types";
+import { IParams } from "types/types";
 
 interface IMoviesState {
   movies: IMovie[];
@@ -9,14 +10,17 @@ interface IMoviesState {
   error: null | string;
 }
 
-export const fetchMovies = createAsyncThunk<IMovie[], string, { rejectValue: string }>(
+export const fetchMovies = createAsyncThunk<IMovie[], IParams, { rejectValue: string }>(
   "home/fetchMovies",
-  async (movieName, { rejectWithValue }) => {
+  async ({ search, page, type }, { rejectWithValue }) => {
     try {
-      const movies = await MovieAPI.getMovieBySearch(movieName);
-      const transformedMovies = transformMovies(movies.Search);
+      const movies = await MovieAPI.getMovieBySearch(search, type, page);
 
-      return transformedMovies;
+      if (movies.Error) {
+        return rejectWithValue(movies.Error);
+      } else {
+        return transformMovies(movies.Search);
+      }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         return rejectWithValue(error.message);
@@ -49,6 +53,7 @@ const homeSlice = createSlice({
     builder.addCase(fetchMovies.rejected, (state, action) => {
       if (action.payload) {
         state.isLoading = false;
+        state.movies = [];
         state.error = action.payload;
       }
     });

@@ -1,32 +1,50 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { IUserInfo } from "types";
+import { FirebaseErrorCode, getFirebaseErrorMessage, getUserInitials } from "utils";
+
+const getUserInfo = () => {
+  const userInfo = localStorage.getItem("userInfo");
+
+  if (userInfo !== null) {
+    return JSON.parse(userInfo);
+  } else return "";
+};
 
 interface IAccountState {
-  user: IUserInfo;
+  name: string;
+  email: string;
+  isAuth: boolean;
   isLoading: boolean;
+  error: null | string;
 }
 
 export const signUp = createAsyncThunk<
-  IUserInfo,
+  { name: string; email: string },
   { email: string; password: string; name: string },
   { rejectValue: string }
 >("account/signUp", async ({ email, password, name }, { rejectWithValue }) => {
-  const auth = getAuth();
-  const { user } = await createUserWithEmailAndPassword(auth, email, password);
-  console.log(user);
+  try {
+    const auth = getAuth();
+    const { user } = await createUserWithEmailAndPassword(auth, email, password);
 
-  return {
-    name: name,
-    email: email,
-    password: password,
-    id: user.uid,
-  };
+    return {
+      name,
+      email,
+    };
+  } catch (error) {
+    const firebaseError = error as { code: FirebaseErrorCode };
+
+    return rejectWithValue(getFirebaseErrorMessage(firebaseError.code));
+  }
 });
 
 const initialState: IAccountState = {
-  user: {} as IUserInfo,
+  name: getUserInfo() && getUserInfo().name,
+  email: getUserInfo() && getUserInfo().email,
   isLoading: false,
+  error: null,
+  isAuth: getUserInfo() && getUserInfo().isAuth,
 };
 
 const accountSlice = createSlice({
@@ -36,17 +54,22 @@ const accountSlice = createSlice({
   extraReducers(builder) {
     builder.addCase(signUp.pending, (state) => {
       state.isLoading = true;
+      state.error = null;
+      state.isAuth = false;
     });
-    builder.addCase(signUp.fulfilled, (state, action) => {
+    builder.addCase(signUp.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-      state.user = action.payload;
+      state.isAuth = true;
+      state.name = payload.name;
+      state.email = payload.email;
     });
-    // builder.addCase(signUp.rejected, (state, action) => {
-    //   if (action.payload) {
-    //     state.isLoading = false;
-    //     state.error = action.payload;
-    //   }
-    // });
+    builder.addCase(signUp.rejected, (state, { payload }) => {
+      if (payload) {
+        state.isLoading = false;
+        state.error = payload;
+        state.isAuth = false;
+      }
+    });
   },
 });
 
