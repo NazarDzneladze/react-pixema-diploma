@@ -9,8 +9,12 @@ import { addFavorite } from "./slices/favorites/favoritesSlice";
 import { selectMovieDetails } from "./selectors/movieDetailsSelector";
 import { selectMovies } from "./selectors/moviesSelector";
 import { selectTheme } from "./selectors/themeSelector";
+import { selectAccount } from "./selectors/accountSelector";
+import { fetchTrends } from "./slices/trends/trendsSlice";
 
 export {
+  fetchTrends,
+  selectAccount,
   selectTheme,
   selectMovies,
   selectMovieDetails,
