@@ -21,7 +21,9 @@ const StyledHeader = styled.header`
   }
 `;
 
-const Search = styled(StyledInput)`
+const HeaderForm = styled.form`
+  display: grid;
+
   ${Breakpoint.XXS} {
     grid-column: span 2;
     grid-row: 2/3;
@@ -36,4 +38,8 @@ const Search = styled(StyledInput)`
     grid-column: 1/2;
   }
 `;
-export { StyledHeader, Search };
+
+const Search = styled(StyledInput)`
+  place-self: stretch;
+`;
+export { StyledHeader, Search, HeaderForm };

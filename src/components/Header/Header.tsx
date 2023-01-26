@@ -1,20 +1,37 @@
 import { BurgerIcon } from "assets";
 import { AuthDetails, PixemaLogo } from "components";
 import { useWindowSize } from "hooks";
-import { useForm } from "react-hook-form";
-import { Search, StyledHeader } from "./styles";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { IParams } from "types/types";
+import { HeaderForm, Search, StyledHeader } from "./styles";
+import { memo } from "react";
 
-export const Header = () => {
+interface IHeaderProps {
+  params?: IParams;
+  setParams?: (searchValue: string) => void;
+}
+
+interface IFormProps {
+  search: string;
+}
+
+export const Header = memo(({ setParams }: IHeaderProps) => {
   const { width = 0 } = useWindowSize();
-  const { register, watch } = useForm();
+  const { handleSubmit, register } = useForm<IFormProps>();
 
-  console.log(watch("search"));
+  const onSubmit: SubmitHandler<IFormProps> = ({ search }) => {
+    if (setParams) {
+      setParams(search);
+    }
+  };
 
   return (
     <StyledHeader>
       {width < 1440 && <PixemaLogo />}
-      <Search placeholder="Search" {...register("search")} />
+      <HeaderForm onSubmit={handleSubmit(onSubmit)}>
+        <Search {...register("search")} />
+      </HeaderForm>
       {width >= 1440 ? <AuthDetails /> : <BurgerIcon />}
     </StyledHeader>
   );
-};
+});

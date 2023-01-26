@@ -7,7 +7,6 @@ import { Button } from "./Button/Button";
 import { MovieItem } from "./MovieItem/MovieItem";
 import { MovieList } from "./MovieList/MovieList";
 import { PixemaLogo } from "./PixemaLogo/PixemaLogo";
-import { SignUpForm } from "./SignUpForm/SignUpForm";
 import { Header } from "./Header/Header";
 import { ThemeToggler } from "./ThemeToggler/ThemeToggler";
 import { ModalFiltersWindow } from "./ModalFiltersWindow/ModalFiltersWindow";
@@ -24,7 +23,6 @@ export {
   ModalFiltersWindow,
   ThemeToggler,
   Header,
-  SignUpForm,
   PixemaLogo,
   Input,
   Navigation,
