@@ -1,11 +1,12 @@
 import { onAuthStateChanged, signOut, getAuth } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { useAppSelector } from "store";
+import { selectAccount, useAppSelector } from "store";
+import { getUserInitials } from "utils";
 import { FullUserName, StyledAuthDetails, UserInfoContainer, UserNameInitials } from "./styles";
 
 export const AuthDetails = () => {
   const [authUser, setAuthUser] = useState<any>("");
-  const { user } = useAppSelector((state) => state.account);
+  const { name, email } = useAppSelector(selectAccount);
 
   useEffect(() => {
     const auth = getAuth();
@@ -27,13 +28,15 @@ export const AuthDetails = () => {
     signOut(auth);
   };
 
+  //   const initials = getUserInitials(name);
+
   return (
     <StyledAuthDetails>
       <UserInfoContainer>
-        <UserNameInitials>TEST</UserNameInitials>
-        <FullUserName>TEST</FullUserName>
+        <UserNameInitials>{email}</UserNameInitials>
+        <FullUserName>{email}</FullUserName>
       </UserInfoContainer>
+      <button onClick={handleSignOut}>sign out</button>
     </StyledAuthDetails>
   );
 };
-

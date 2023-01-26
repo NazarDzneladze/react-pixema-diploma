@@ -22,13 +22,6 @@ const StyledSideBar = styled.div`
     place-self: start;
   }
 
-  ${Breakpoint.XXS} {
-    display: none;
-  }
-
-  ${Breakpoint.XXL} {
-    display: grid;
-  }
 `;
 
 export { StyledSideBar, PixemaIconLink, CopyrightText };
