@@ -9,13 +9,15 @@ export class MovieAPI {
     baseURL: MovieAPI.BASE_URL,
   });
 
-  static async getMovieBySearch(s: string, type = "movie") {
+  static async getMovieBySearch(s: string, type = "movie", page: number) {
     const params = {
       s: s,
       type: type,
+      page: page,
     };
 
     const { data } = await this.API.get<IMovieResponse>("", { params });
+    console.log(data);
 
     return data;
   }
