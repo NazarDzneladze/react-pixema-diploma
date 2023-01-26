@@ -66,8 +66,15 @@ export interface IMovieDetails {
 }
 
 export interface IUserInfo {
+  initials: string;
   name: string;
   email: string;
   password: string;
   id: string;
+}
+
+export interface IParams {
+  search: string;
+  page: number;
+  type: string;
 }
