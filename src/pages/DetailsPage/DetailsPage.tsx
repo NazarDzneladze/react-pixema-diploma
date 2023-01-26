@@ -38,6 +38,7 @@ import {
   Carousel,
 } from "./styles";
 import { useWindowSize } from "hooks";
+import { getRandomMovieKeyWord } from "utils";
 
 export const DetailsPage = () => {
   const dispatch = useAppDispatch();
@@ -47,7 +48,7 @@ export const DetailsPage = () => {
   const { imdb = "" } = useParams();
 
   useEffect(() => {
-    dispatch(fetchMovieDetails(imdb)).then(() => dispatch(fetchMovies("star wars")));
+    dispatch(fetchMovieDetails(imdb));
   }, [dispatch, imdb]);
 
   const handleAddFavorite = () => {

@@ -13,7 +13,15 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 
 const StyledDetailsPage = styled.div`
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: 56px 1fr;
+
+  ${Breakpoint.XXS} {
+    grid-template-rows: auto 1fr;
+  }
+
+  ${Breakpoint.MD} {
+    grid-template-rows: 56px 1fr;
+  }
 `;
 
 const DetailsContainer = styled.div`

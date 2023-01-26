@@ -1,9 +1,17 @@
 import styled from "styled-components";
-import { Color } from "ui";
+import { Breakpoint, Color } from "ui";
 
 const StyledFavoritesPage = styled.div`
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: 56px 1fr;
+
+  ${Breakpoint.XXS} {
+    grid-template-rows: auto 1fr;
+  }
+
+  ${Breakpoint.MD} {
+    grid-template-rows: 56px 1fr;
+  }
 `;
 
 const EmptyFavoritesContainer = styled.div`
