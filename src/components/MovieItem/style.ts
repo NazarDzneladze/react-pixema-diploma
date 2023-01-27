@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import { Color } from "ui";
 
-const StyledMovieItem = styled.li``;
+const StyledMovieItem = styled(motion.li)``;
 
 const MoviePoster = styled.img`
   height: 356px;

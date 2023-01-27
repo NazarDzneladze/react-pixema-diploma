@@ -9,8 +9,20 @@ interface IProps {
 }
 
 export const MovieList = ({ movies, isTrends }: IProps) => {
+  const container = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.4,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
   return (
-    <StyledMovieList>
+    <StyledMovieList variants={container} initial="hidden" animate="visible">
       {movies.map((movie) => (
         <MovieItem
           movie={movie}

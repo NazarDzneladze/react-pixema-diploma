@@ -21,9 +21,17 @@ interface IProps {
 
 export const MovieItem = memo(
   ({ movie: { imdbID, poster, title }, isFavorite, isTrends }: IProps) => {
+    const movie = {
+      hidden: { y: 20, opacity: 0 },
+      visible: {
+        y: 0,
+        opacity: 1,
+      },
+    };
+
     return (
-      <StyledMovieItem>
-        <Link to={generatePath(ROUTE.DETAILS, { imdb: imdbID })}>
+      <StyledMovieItem variants={movie} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+        <Link to={generatePath(ROUTE.HOME + ROUTE.DETAILS, { imdb: imdbID })}>
           <PosterContainer>
             <MoviePoster src={poster === "N/A" ? NoImageAvailableImg : poster} alt={title} />
             {isFavorite && <FavoriteFilmIcon />}

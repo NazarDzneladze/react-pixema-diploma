@@ -5,7 +5,7 @@ import { StyledNavLink } from "./styles";
 
 interface IProps {
   children: ReactNode;
-  to: ROUTE;
+  to: ROUTE | string;
 }
 
 export const CustomNavLink = ({ children, to }: IProps) => {
