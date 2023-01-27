@@ -1,17 +1,17 @@
 import styled from "styled-components";
 import { StyledInput } from "components/Input/styles";
-import { Breakpoint } from "ui";
+import { Breakpoint, Color } from "ui";
 
 const StyledHeader = styled.header`
   display: grid;
 
   ${Breakpoint.XXS} {
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto 56px;
+    grid-template-columns: 1fr 56px;
+    grid-template-rows: repeat(2, 56px);
   }
 
   ${Breakpoint.MD} {
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr 56px;
     grid-template-rows: auto;
   }
 
@@ -19,6 +19,16 @@ const StyledHeader = styled.header`
     grid-template-columns: 1fr auto;
     column-gap: 40px;
   }
+`;
+
+const BurgerButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: ${Color.PRIMARY};
+  border-radius: 10px;
+  border: none;
 `;
 
 const HeaderForm = styled.form`
@@ -42,4 +52,4 @@ const HeaderForm = styled.form`
 const Search = styled(StyledInput)`
   place-self: stretch;
 `;
-export { StyledHeader, Search, HeaderForm };
+export { StyledHeader, Search, HeaderForm, BurgerButton };
