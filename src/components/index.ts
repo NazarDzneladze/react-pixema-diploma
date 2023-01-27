@@ -14,8 +14,10 @@ import { Portal } from "./Portal/Portal";
 import { ModalWrapper } from "./ModalWrapper/ModalWrapper";
 import { AuthDetails } from "./AuthDetails/AuthDetails";
 import { Spinner } from "./Spinner/Spinner";
+import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
 
 export {
+  BurgerMenu,
   Spinner,
   AuthDetails,
   ModalWrapper,
