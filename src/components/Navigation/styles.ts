@@ -8,10 +8,6 @@ const StyledNavigation = styled.nav`
     column-gap: 20px;
   }
 
-  ${Breakpoint.XXS} {
-    display: none;
-  }
-
   ${Breakpoint.XXL} {
     display: grid;
     grid-template-rows: repeat(4, auto);

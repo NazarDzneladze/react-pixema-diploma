@@ -11,7 +11,7 @@ export const ThemeToggler = () => {
 
   return (
     <StyledThemeToggler onClick={handleTheme}>
-      <ToggleInput type="checkbox" checked={currentTheme === "light" ? false : true} />
+      <ToggleInput type="checkbox" defaultChecked={currentTheme === "light" ? false : true} />
     </StyledThemeToggler>
   );
 };
