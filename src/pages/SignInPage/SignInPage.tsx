@@ -1,10 +1,11 @@
 import { Button } from "components";
 import { StyledInput } from "components/Input/styles";
 import { FormFieldName } from "config";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { ROUTE } from "router";
-import { useAppDispatch, useAppSelector, selectAccount } from "store";
+import { useAppDispatch, useAppSelector, selectAccount, signIn } from "store";
 import { getFormValidation } from "utils";
 import {
   ErrorMessage,
@@ -35,12 +36,27 @@ export const SignInPage = () => {
       email: "",
     },
   });
-  const dispath = useAppDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [signInError, setSignInError] = useState<string | null>(null);
 
-  const onSubmit: SubmitHandler<ISignInFormValues> = ({ email, password }) => {
-    console.log(password);
-    console.log(email);
+  const userInfoToSave = JSON.parse(localStorage.getItem("userInfo")!);
+  if (userInfoToSave) {
+    userInfoToSave.isAuth = true;
+  }
+
+  const onSubmit: SubmitHandler<ISignInFormValues> = (userInfo) => {
+    setSignInError(null);
+    dispatch(signIn(userInfo))
+      .unwrap()
+      .then(() => {
+        localStorage.length > 0 && localStorage.setItem("userInfo", JSON.stringify(userInfoToSave));
+        navigate(ROUTE.HOME);
+      })
+      .catch((error) => {
+        setSignInError(error);
+        reset();
+      });
   };
   return (
     <StyledSignInPage>
@@ -65,6 +81,7 @@ export const SignInPage = () => {
             {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
           </FieldLabel>
         </FormFields>
+        {signInError && <ErrorMessage>{signInError}</ErrorMessage>}
         <FormFooter>
           <Button type="submit">Sign Up</Button>
           <TextFooter>

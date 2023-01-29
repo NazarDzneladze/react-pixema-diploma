@@ -2,7 +2,6 @@ import { Button } from "components";
 import { StyledInput } from "components/Input/styles";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { ROUTE } from "router";
 import {
   FieldLabel,
@@ -18,9 +17,10 @@ import { selectAccount, signUp, useAppDispatch, useAppSelector } from "store";
 import { getFormValidation } from "utils";
 import { FormFieldName } from "config";
 import { useState } from "react";
+import { IUser } from "types";
 
 interface ISignUpFormValues {
-  name: string;
+  userName: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -35,31 +35,27 @@ export const SignUpPage = () => {
     reset,
   } = useForm<ISignUpFormValues>({
     mode: "onBlur",
-    defaultValues: {
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    },
   });
-  const dispath = useAppDispatch();
+  const dispatch = useAppDispatch();
   const [signUpError, setSignUpError] = useState<null | string>(null);
-
   const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<ISignUpFormValues> = ({ email, password, name }) => {
-    const userInfo = {
-      name: name,
-      email: email,
+  const onSubmit: SubmitHandler<ISignUpFormValues> = (userInfo) => {
+    const userInfoStorage: IUser = {
+      name: userInfo.userName,
+      email: userInfo.email,
       isAuth: true,
     };
-
-    dispath(signUp({ email, password, name }))
+    dispatch(signUp(userInfo))
+      .unwrap()
       .then(() => {
-        localStorage.setItem("userInfo", JSON.stringify(userInfo));
+        localStorage.setItem("userInfo", JSON.stringify(userInfoStorage));
         navigate(ROUTE.HOME);
+        reset();
       })
-      .catch((error) => setSignUpError(error));
+      .catch((error) => {
+        setSignUpError(error);
+      });
   };
 
   return (
@@ -71,9 +67,9 @@ export const SignUpPage = () => {
             Name
             <StyledInput
               placeholder="Your name"
-              {...register("name", getFormValidation(FormFieldName.NAME))}
+              {...register("userName", getFormValidation(FormFieldName.NAME))}
             />
-            {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
+            {errors.userName && <ErrorMessage>{errors.userName.message}</ErrorMessage>}
           </FieldLabel>
           <FieldLabel>
             Email
@@ -87,6 +83,7 @@ export const SignUpPage = () => {
           <FieldLabel>
             Password
             <StyledInput
+              type="password"
               placeholder="Your password"
               {...register("password", getFormValidation(FormFieldName.PASSWORD))}
             />
@@ -95,6 +92,7 @@ export const SignUpPage = () => {
           <FieldLabel>
             Confirm password
             <StyledInput
+              type="password"
               placeholder="Confirm password"
               {...register("confirmPassword", {
                 ...getFormValidation(FormFieldName.CONFIRM_PASSWORD),
