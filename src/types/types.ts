@@ -65,12 +65,10 @@ export interface IMovieDetails {
   type: string;
 }
 
-export interface IUserInfo {
-  initials: string;
+export interface IUser {
   name: string;
   email: string;
-  password: string;
-  id: string;
+  isAuth: boolean;
 }
 
 export interface IParams {
