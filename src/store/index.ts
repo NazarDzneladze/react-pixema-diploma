@@ -11,8 +11,12 @@ import { selectMovies } from "./selectors/moviesSelector";
 import { selectTheme } from "./selectors/themeSelector";
 import { selectAccount } from "./selectors/accountSelector";
 import { fetchTrends } from "./slices/trends/trendsSlice";
+import { logOutUser } from "./slices/account/accountSlice";
+import { signIn } from "./slices/account/accountSlice";
 
 export {
+  signIn,
+  logOutUser,
   fetchTrends,
   selectAccount,
   selectTheme,
