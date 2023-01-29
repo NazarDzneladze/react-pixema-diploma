@@ -1,6 +1,6 @@
 import { Header, ModalFiltersWindow, ThemeToggler } from "components";
 import { useToggle } from "hooks";
-import { useAppSelector } from "store";
+import { selectAccount, useAppSelector } from "store";
 import {
   ColorMode,
   ColorModeInfo,
@@ -20,6 +20,7 @@ import {
 export const SettingsPage = () => {
   const { currentTheme } = useAppSelector((state) => state.theme);
   const [isOpen, setIsOpen] = useToggle();
+  const { name, email } = useAppSelector(selectAccount);
 
   const handleOpenModal = () => {
     setIsOpen();
@@ -34,11 +35,11 @@ export const SettingsPage = () => {
           <ProfileInfo currentTheme={currentTheme}>
             <Label>
               Name
-              <SettingsInput placeholder="testName" />
+              <SettingsInput placeholder={name} />
             </Label>
             <Label>
               Email
-              <SettingsInput placeholder="testEmail" />
+              <SettingsInput placeholder={email || ""} />
             </Label>
           </ProfileInfo>
         </Profile>
