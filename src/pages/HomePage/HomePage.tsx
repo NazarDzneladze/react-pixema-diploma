@@ -6,7 +6,6 @@ import { IMovie } from "types";
 import { getRandomMovieKeyWord } from "utils";
 import { ErrorText, StyledHomePage } from "./style";
 
-
 interface IParams {
   search: string;
   movies: IMovie[];

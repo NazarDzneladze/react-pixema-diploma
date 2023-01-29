@@ -1,40 +1,30 @@
 import { onAuthStateChanged, signOut, getAuth } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { selectAccount, useAppSelector } from "store";
+import { logOutUser, selectAccount, useAppDispatch, useAppSelector } from "store";
 import { getUserInitials } from "utils";
 import { FullUserName, StyledAuthDetails, UserInfoContainer, UserNameInitials } from "./styles";
 
 export const AuthDetails = () => {
-  const [authUser, setAuthUser] = useState<any>("");
-  const { name, email } = useAppSelector(selectAccount);
+  const { name, email, isAuth } = useAppSelector(selectAccount);
+  const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    const auth = getAuth();
-    const listen = onAuthStateChanged(auth, (user: any) => {
-      if (user) {
-        setAuthUser(user);
-      } else {
-        setAuthUser(null);
-      }
-    });
-
-    return () => {
-      listen();
-    };
-  }, []);
+  const userInfo = JSON.parse(localStorage.getItem("userInfo")!);
+  if (userInfo) {
+    userInfo.isAuth = false;
+  }
 
   const handleSignOut = () => {
+    dispatch(logOutUser());
     const auth = getAuth();
     signOut(auth);
+    localStorage.length > 0 && localStorage.setItem("userInfo", JSON.stringify(userInfo));
   };
-
-  //   const initials = getUserInitials(name);
 
   return (
     <StyledAuthDetails>
       <UserInfoContainer>
-        <UserNameInitials>{email}</UserNameInitials>
-        <FullUserName>{email}</FullUserName>
+        <UserNameInitials>{isAuth ? getUserInitials(name) : "test"}</UserNameInitials>
+        <FullUserName>{isAuth && name || "test"}</FullUserName>
       </UserInfoContainer>
       <button onClick={handleSignOut}>sign out</button>
     </StyledAuthDetails>
