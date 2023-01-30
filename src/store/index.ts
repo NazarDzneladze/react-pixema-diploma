@@ -13,8 +13,10 @@ import { selectAccount } from "./selectors/accountSelector";
 import { fetchTrends } from "./slices/trends/trendsSlice";
 import { logOutUser } from "./slices/account/accountSlice";
 import { signIn } from "./slices/account/accountSlice";
+import { removeFavorite } from "./slices/favorites/favoritesSlice";
 
 export {
+  removeFavorite,
   signIn,
   logOutUser,
   fetchTrends,

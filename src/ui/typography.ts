@@ -75,6 +75,8 @@ const BODY = css`
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
+
+  color: ${Color.WHITE_THEME};
 `;
 
 export const Typography = { H1, H2, H3, S1, S2, S3, BODY };
