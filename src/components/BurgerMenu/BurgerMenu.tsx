@@ -1,20 +1,38 @@
 import { HomeIcon, TrendsIcon, FavoritesIcon, SettingsIcon, CloseIcon } from "assets";
 import { CustomNavLink } from "components";
+import { getAuth, signOut } from "firebase/auth";
 import { ROUTE } from "router";
-import { BurgerNav, StyledBurgerMenu } from "./styles";
+import { logOutUser, selectAccount, useAppDispatch, useAppSelector } from "store";
+import { BurgerNav, LogOutButton, StyledBurgerMenu } from "./styles";
 
 interface IProps {
   closeMenu: () => void;
 }
 
 export const BurgerMenu = ({ closeMenu }: IProps) => {
+  const { isAuth } = useAppSelector(selectAccount);
+  const dispatch = useAppDispatch();
+
+  const handleSignOut = () => {
+    dispatch(logOutUser());
+
+    const auth = getAuth();
+    const userInfo = JSON.parse(localStorage.getItem("userInfo")!);
+    if (userInfo) {
+      userInfo.isAuth = false;
+    }
+
+    signOut(auth);
+    localStorage.length > 0 && localStorage.setItem("userInfo", JSON.stringify(userInfo));
+  };
+
   return (
     <StyledBurgerMenu
       initial={{ x: 150 }}
       animate={{ x: 0 }}
       transition={{ type: "spring", stiffness: 250 }}
     >
-      <BurgerNav>
+      <BurgerNav $isAuth={isAuth}>
         <CustomNavLink to={ROUTE.HOME}>
           <HomeIcon />
           Home
@@ -31,6 +49,7 @@ export const BurgerMenu = ({ closeMenu }: IProps) => {
           <SettingsIcon />
           Settings
         </CustomNavLink>
+        {isAuth && <LogOutButton onClick={handleSignOut}>LogOut</LogOutButton>}
       </BurgerNav>
       <CloseIcon onClick={closeMenu} />
     </StyledBurgerMenu>

@@ -26,9 +26,17 @@ const StyledBurgerMenu = styled(motion.div)`
   }
 `;
 
-const BurgerNav = styled.nav`
+const LogOutButton = styled.button`
+  font-size: 36px;
+
+  background-color: transparent;
+  border: none;
+  color: ${Color.SECONDARY};
+`;
+
+const BurgerNav = styled.nav<{ $isAuth: boolean }>`
   display: grid;
-  grid-template-rows: repeat(4, auto);
+  grid-template-rows: ${({ $isAuth }) => ($isAuth ? "repeat(5, auto)" : "repeat(4, auto)")};
   row-gap: 40px;
 
   a {
@@ -38,4 +46,4 @@ const BurgerNav = styled.nav`
   }
 `;
 
-export { StyledBurgerMenu, BurgerNav };
+export { StyledBurgerMenu, BurgerNav, LogOutButton };
