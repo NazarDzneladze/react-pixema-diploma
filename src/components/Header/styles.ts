@@ -11,12 +11,13 @@ const StyledHeader = styled.header`
   }
 
   ${Breakpoint.MD} {
-    grid-template-columns: auto 1fr 56px;
+    grid-template-columns: 202px 1fr 56px;
     grid-template-rows: auto;
+    column-gap: 32px;
   }
 
   ${Breakpoint.XXL} {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr 264px;
     column-gap: 40px;
   }
 `;
@@ -32,6 +33,8 @@ const BurgerButton = styled.button`
 `;
 
 const HeaderForm = styled.form`
+  position: relative;
+
   display: grid;
 
   ${Breakpoint.XXS} {
@@ -46,6 +49,14 @@ const HeaderForm = styled.form`
 
   ${Breakpoint.XXL} {
     grid-column: 1/2;
+  }
+
+  svg {
+    position: absolute;
+    top: 22px;
+    right: 21px;
+
+    cursor: pointer;
   }
 `;
 
