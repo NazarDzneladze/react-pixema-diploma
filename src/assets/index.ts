@@ -12,8 +12,12 @@ import { ReactComponent as CloseIcon } from "./icons/close.svg";
 import { ReactComponent as FavoriteFilmIcon } from "./icons/favorite-film.svg";
 import { ReactComponent as EmptyFavoritesIcon } from "./icons/empty-favorites.svg";
 import NoImageAvailableImg from "./images/no-image-available.jpg";
+import { ReactComponent as NotAuthorizedIcon } from "./icons/not-authorized-user.svg";
+import { ReactComponent as MenuArrowIcon } from "./icons/user-menu-arrow.svg";
 
 export {
+  MenuArrowIcon,
+  NotAuthorizedIcon,
   NoImageAvailableImg,
   EmptyFavoritesIcon,
   FavoriteFilmIcon,
