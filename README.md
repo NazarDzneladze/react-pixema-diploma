@@ -69,25 +69,25 @@ Just install the project to see how it works.
 
 - On the home page you can find the movie you want.
 
-![Screen](/readme/search.png)
+![Screen](/readme/search.PNG)
 
 <br>
 
 - More informations you can find on details page. You can also add the film to your favorites here.
 
-![Details](/readme/details.png)
+![Details](/readme/details.PNG)
 
 <br/>
 
 - If you have an account you can log in.
 
-![SignIn](/readme/sign-in.png)
+![SignIn](/readme/sign-in.PNG)
 
 <br/>
 
 - Or you can create your account.
 
-![SignUp](/readme/sign-up.png)
+![SignUp](/readme/sign-up.PNG)
 
 #
 
