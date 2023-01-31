@@ -17,7 +17,7 @@ const StyledDetailsPage = styled.div`
 
   ${Breakpoint.XXS} {
     grid-template-rows: auto 1fr;
-	row-gap: 56px;
+    row-gap: 56px;
   }
 
   ${Breakpoint.MD} {
@@ -99,8 +99,10 @@ const Raiting = styled.span`
   background-color: #323537;
   border-radius: 6px;
 
+  color: ${Color.DARK_THEME};
+
   svg path {
-    fill: ${Color.WHITE_THEME};
+    fill: ${Color.DARK_THEME};
   }
 
   svg {
@@ -122,7 +124,7 @@ const MovieInfo = styled.div`
 const Runtime = styled.span`
   padding: 8px;
 
-  color: ${Color.WHITE_THEME};
+  color: ${Color.DARK_THEME};
   border-radius: 6px;
   background-color: #323537;
 `;
