@@ -48,7 +48,9 @@ export const AuthDetails = () => {
         <UserNameInitials>
           {isAuth ? getUserInitials(name) : <NotAuthorizedIcon />}
         </UserNameInitials>
-        <FullUserName>{isAuth ? name : <Link to={ROUTE.SIGN_IN}>Sign In</Link>}</FullUserName>
+        <FullUserName>
+          {isAuth ? name : <Link to={ROUTE.HOME + ROUTE.SIGN_IN}>Sign In</Link>}
+        </FullUserName>
       </UserInfoContainer>
       <UserMenu
         animate={isOpenUsermMenu ? "checked" : "notClicked"}
@@ -58,7 +60,7 @@ export const AuthDetails = () => {
       >
         <MenuArrowIcon />
       </UserMenu>
-      {isOpenUsermMenu && <DropdownMenu />}
+      {isOpenUsermMenu && isAuth && <DropdownMenu />}
     </StyledAuthDetails>
   );
 };

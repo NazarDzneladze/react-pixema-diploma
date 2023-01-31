@@ -84,7 +84,7 @@ export const SignInPage = () => {
         </FormFields>
         {signInError && <ErrorMessage>{signInError}</ErrorMessage>}
         <FormFooter>
-          <Button type="submit">Sign Up</Button>
+          <Button type="submit">Sign In</Button>
           <TextFooter>
             Don’t have an account?
             <Link to={generatePath(ROUTE.HOME + ROUTE.SIGN_UP)}>Sign Up</Link>

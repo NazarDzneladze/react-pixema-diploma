@@ -7,6 +7,7 @@ const StyledTrendsPage = styled.div`
 
   ${Breakpoint.XXS} {
     grid-template-rows: auto 1fr;
+	row-gap: 56px;
   }
 
   ${Breakpoint.MD} {

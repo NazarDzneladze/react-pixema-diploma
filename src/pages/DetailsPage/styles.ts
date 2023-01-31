@@ -17,6 +17,7 @@ const StyledDetailsPage = styled.div`
 
   ${Breakpoint.XXS} {
     grid-template-rows: auto 1fr;
+	row-gap: 56px;
   }
 
   ${Breakpoint.MD} {
@@ -29,12 +30,12 @@ const AddFavoriteButton = styled.button<{ $isAuth?: boolean }>`
 
   border-radius: 10px;
   border: none;
-  background-color: ${Color.GRAPHITE};
+  background-color: ${Color.LIGHT};
 
   cursor: ${($isAuth) => ($isAuth ? "pointer" : "not-allowed")};
 `;
 
-const RemoveFavoriteButton = styled.button``;
+const RemoveFavoriteButton = styled(AddFavoriteButton)``;
 
 const DetailsContainer = styled.div`
   display: grid;
