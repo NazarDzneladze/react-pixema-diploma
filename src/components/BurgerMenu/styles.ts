@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { Color } from "ui";
+import { Breakpoint, Color } from "ui";
 
 const StyledBurgerMenu = styled(motion.div)`
   position: fixed;
@@ -37,12 +37,19 @@ const LogOutButton = styled.button`
 const BurgerNav = styled.nav<{ $isAuth: boolean }>`
   display: grid;
   grid-template-rows: ${({ $isAuth }) => ($isAuth ? "repeat(5, auto)" : "repeat(4, auto)")};
-  row-gap: 40px;
 
   a {
     display: grid;
     grid-template-columns: 24px 1fr;
     column-gap: 20px;
+  }
+
+  ${Breakpoint.XXS} {
+    row-gap: 32px;
+  }
+
+  ${Breakpoint.MD} {
+    row-gap: 40px;
   }
 `;
 

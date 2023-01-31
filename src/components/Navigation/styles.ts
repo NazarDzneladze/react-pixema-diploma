@@ -11,7 +11,7 @@ const StyledNavigation = styled.nav`
   ${Breakpoint.XXL} {
     display: grid;
     grid-template-rows: repeat(4, auto);
-    row-gap: 25px;
+    row-gap: 40px;
   }
 `;
 

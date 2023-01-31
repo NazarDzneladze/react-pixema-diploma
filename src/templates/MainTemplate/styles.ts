@@ -26,6 +26,8 @@ const StyledMainTemplate = styled.div`
 
   ${Breakpoint.XXL} {
     grid-template-columns: 20% 80%;
+
+    padding-bottom: 64px;
   }
 `;
 

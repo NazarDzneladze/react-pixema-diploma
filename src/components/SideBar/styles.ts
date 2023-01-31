@@ -22,6 +22,9 @@ const StyledSideBar = styled.div`
     place-self: start;
   }
 
+  ${Breakpoint.XXS} {
+    row-gap: 56px;
+  }
 `;
 
 export { StyledSideBar, PixemaIconLink, CopyrightText };
