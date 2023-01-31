@@ -34,7 +34,7 @@ export const SettingsPage = () => {
             </Label>
             <Label>
               Email
-              <SettingsInput placeholder={email || ""} />
+              <SettingsInput $currentTheme={currentTheme} placeholder={email || ""} />
             </Label>
           </ProfileInfo>
         </Profile>

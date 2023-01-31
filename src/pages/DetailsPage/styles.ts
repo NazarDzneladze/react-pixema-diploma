@@ -166,6 +166,8 @@ const OtherDetails = styled.div`
   row-gap: 20px;
   column-gap: 60px;
 
+  color: ${Color.WHITE_THEME};
+
   ${Info}:nth-child(odd) {
     color: ${Color.LIGHT};
   }

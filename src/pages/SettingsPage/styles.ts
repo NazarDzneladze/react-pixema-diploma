@@ -57,7 +57,7 @@ const Title = styled.h3`
 
 const Label = styled.label`
   display: grid;
-  grid-template-rows: auto auto;
+  grid-template-rows: repeat(2, auto);
   row-gap: 8px;
 
   width: 100%;
@@ -68,13 +68,6 @@ const Label = styled.label`
 const SettingsInput = styled(StyledInput)<{ $currentTheme?: string }>`
   border: 1px solid
     ${({ $currentTheme }) => ($currentTheme === "light" ? `${Color.LIGHT}` : "transparent")};
-
-  :active,
-  :hover,
-  :focus {
-    outline: 0;
-    outline-offset: 0;
-  }
 `;
 
 const Password = styled(Profile)``;
@@ -87,7 +80,7 @@ const PasswordInfo = styled(ProfileInfo)<{ $currentTheme?: string }>`
     $currentTheme === "light" ? "none" : `${Color.DARK}`};
 
   ${Breakpoint.XXS} {
-    grid-template-rows: repeat(3, auto);
+    grid-template-rows: repeat(2, auto);
     row-gap: 20px;
 
     padding: 24px;
