@@ -1,32 +1,64 @@
-import { onAuthStateChanged, signOut, getAuth } from "firebase/auth";
-import { useEffect, useState } from "react";
+import { MenuArrowIcon, NotAuthorizedIcon } from "assets";
+import { DropdownMenu } from "components/DropdownMenu/DropdownMenu";
+import { signOut, getAuth } from "firebase/auth";
+import { motion } from "framer-motion";
+import { useToggle } from "hooks";
+import { Link } from "react-router-dom";
+import { ROUTE } from "router";
 import { logOutUser, selectAccount, useAppDispatch, useAppSelector } from "store";
 import { getUserInitials } from "utils";
-import { FullUserName, StyledAuthDetails, UserInfoContainer, UserNameInitials } from "./styles";
+import {
+  FullUserName,
+  StyledAuthDetails,
+  UserInfoContainer,
+  UserMenu,
+  UserNameInitials,
+} from "./styles";
 
 export const AuthDetails = () => {
   const { name, email, isAuth } = useAppSelector(selectAccount);
   const dispatch = useAppDispatch();
-
-  const userInfo = JSON.parse(localStorage.getItem("userInfo")!);
-  if (userInfo) {
-    userInfo.isAuth = false;
-  }
+  const [isOpenUsermMenu, setIsOpenUsermMenu] = useToggle();
 
   const handleSignOut = () => {
     dispatch(logOutUser());
+
     const auth = getAuth();
+    const userInfo = JSON.parse(localStorage.getItem("userInfo")!);
+    if (userInfo) {
+      userInfo.isAuth = false;
+    }
+
     signOut(auth);
     localStorage.length > 0 && localStorage.setItem("userInfo", JSON.stringify(userInfo));
+  };
+
+  const variants = {
+    notClicked: {
+      rotate: 0,
+    },
+    checked: {
+      rotate: 90,
+    },
   };
 
   return (
     <StyledAuthDetails>
       <UserInfoContainer>
-        <UserNameInitials>{isAuth ? getUserInitials(name) : "test"}</UserNameInitials>
-        <FullUserName>{isAuth && name || "test"}</FullUserName>
+        <UserNameInitials>
+          {isAuth ? getUserInitials(name) : <NotAuthorizedIcon />}
+        </UserNameInitials>
+        <FullUserName>{isAuth ? name : <Link to={ROUTE.SIGN_IN}>Sign In</Link>}</FullUserName>
       </UserInfoContainer>
-      <button onClick={handleSignOut}>sign out</button>
+      <UserMenu
+        animate={isOpenUsermMenu ? "checked" : "notClicked"}
+        variants={variants}
+        onClick={setIsOpenUsermMenu}
+        disabled={isAuth ? false : true}
+      >
+        <MenuArrowIcon />
+      </UserMenu>
+      {isOpenUsermMenu && <DropdownMenu />}
     </StyledAuthDetails>
   );
 };

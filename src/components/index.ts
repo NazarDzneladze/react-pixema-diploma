@@ -15,8 +15,10 @@ import { ModalWrapper } from "./ModalWrapper/ModalWrapper";
 import { AuthDetails } from "./AuthDetails/AuthDetails";
 import { Spinner } from "./Spinner/Spinner";
 import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
+import { DropdownMenu } from "./DropdownMenu/DropdownMenu";
 
 export {
+  DropdownMenu,
   BurgerMenu,
   Spinner,
   AuthDetails,
