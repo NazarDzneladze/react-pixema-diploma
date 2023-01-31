@@ -3,7 +3,7 @@ import { StyledInput } from "components/Input/styles";
 import { FormFieldName } from "config";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { generatePath, Link, useNavigate } from "react-router-dom";
 import { ROUTE } from "router";
 import { useAppDispatch, useAppSelector, selectAccount, signIn } from "store";
 import { getFormValidation } from "utils";
@@ -75,6 +75,7 @@ export const SignInPage = () => {
           <FieldLabel>
             Password
             <StyledInput
+              type="password"
               placeholder="Your password"
               {...register("password", getFormValidation(FormFieldName.PASSWORD))}
             />
@@ -85,7 +86,8 @@ export const SignInPage = () => {
         <FormFooter>
           <Button type="submit">Sign Up</Button>
           <TextFooter>
-            Don’t have an account? <Link to={"../" + ROUTE.SIGN_UP}>Sign Up</Link>
+            Don’t have an account?
+            <Link to={generatePath(ROUTE.HOME + ROUTE.SIGN_UP)}>Sign Up</Link>
           </TextFooter>
         </FormFooter>
       </SignInForm>

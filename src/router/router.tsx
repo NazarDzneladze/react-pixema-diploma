@@ -23,10 +23,12 @@ export const router = createBrowserRouter(
         <Route element={<RequareAuth />}>
           <Route path={ROUTE.FAVORITES} element={<FavoritesPage />} />
         </Route>
-        <Route path={ROUTE.SETTINGS} element={<SettingsPage />} />
+        <Route element={<RequareAuth />}>
+          <Route path={ROUTE.SETTINGS} element={<SettingsPage />} />
+        </Route>
         <Route path={ROUTE.DETAILS} element={<DetailsPage />} />
       </Route>
-      <Route path="auth" element={<AuthTemplate />}>
+      <Route element={<AuthTemplate />}>
         <Route path={ROUTE.SIGN_UP} element={<SignUpPage />} />
         <Route path={ROUTE.SIGN_IN} element={<SignInPage />} />
       </Route>

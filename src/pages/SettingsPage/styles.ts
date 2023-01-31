@@ -27,13 +27,14 @@ const Profile = styled.div`
   row-gap: 16px;
 `;
 
-const ProfileInfo = styled.div<{ currentTheme?: string }>`
+const ProfileInfo = styled.div<{ $currentTheme?: string }>`
   display: grid;
 
-  border: ${({ currentTheme }) =>
-    currentTheme === "light" ? `2px solid ${Color.LIGHT}` : `2px solid ${Color.DARK}`};
+  border: ${({ $currentTheme }) =>
+    $currentTheme === "light" ? `2px solid ${Color.LIGHT}` : `2px solid ${Color.DARK}`};
   border-radius: 10px;
-  background-color: ${({ currentTheme }) => (currentTheme === "light" ? "none" : `${Color.DARK}`)};
+  background-color: ${({ $currentTheme }) =>
+    $currentTheme === "light" ? "transparant" : `${Color.DARK}`};
 
   ${Breakpoint.XXS} {
     grid-template-rows: repeat(2, auto);
@@ -64,7 +65,10 @@ const Label = styled.label`
   color: ${Color.WHITE_THEME};
 `;
 
-const SettingsInput = styled(StyledInput)`
+const SettingsInput = styled(StyledInput)<{ $currentTheme?: string }>`
+  border: 1px solid
+    ${({ $currentTheme }) => ($currentTheme === "light" ? `${Color.LIGHT}` : "transparent")};
+
   :active,
   :hover,
   :focus {
@@ -75,11 +79,12 @@ const SettingsInput = styled(StyledInput)`
 
 const Password = styled(Profile)``;
 
-const PasswordInfo = styled(ProfileInfo)<{ currentTheme?: string }>`
+const PasswordInfo = styled(ProfileInfo)<{ $currentTheme?: string }>`
   grid-template-rows: repeat(2, auto);
   row-gap: 24px;
 
-  background-color: ${({ currentTheme }) => (currentTheme === "light" ? "none" : `${Color.DARK}`)};
+  background-color: ${({ $currentTheme }) =>
+    $currentTheme === "light" ? "none" : `${Color.DARK}`};
 
   ${Breakpoint.XXS} {
     grid-template-rows: repeat(3, auto);
@@ -102,7 +107,7 @@ const PasswordInfo = styled(ProfileInfo)<{ currentTheme?: string }>`
 
 const ColorMode = styled(Profile)``;
 
-const ColorModeInfo = styled.div<{ currentTheme?: string }>`
+const ColorModeInfo = styled.div<{ $currentTheme?: string }>`
   display: grid;
   grid-template-columns: repeat(2, auto);
   justify-content: space-between;
@@ -110,9 +115,10 @@ const ColorModeInfo = styled.div<{ currentTheme?: string }>`
   padding: 40px;
 
   border-radius: 10px;
-  border: ${({ currentTheme }) =>
-    currentTheme === "light" ? `2px solid ${Color.LIGHT}` : `2px solid ${Color.DARK}`};
-  background-color: ${({ currentTheme }) => (currentTheme === "light" ? "none" : `${Color.DARK}`)};
+  border: ${({ $currentTheme }) =>
+    $currentTheme === "light" ? `2px solid ${Color.LIGHT}` : `2px solid ${Color.DARK}`};
+  background-color: ${({ $currentTheme }) =>
+    $currentTheme === "light" ? "none" : `${Color.DARK}`};
 `;
 
 const ColorModeTextContainer = styled.div`

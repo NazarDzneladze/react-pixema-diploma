@@ -19,12 +19,7 @@ import {
 
 export const SettingsPage = () => {
   const { currentTheme } = useAppSelector((state) => state.theme);
-  const [isOpen, setIsOpen] = useToggle();
   const { name, email } = useAppSelector(selectAccount);
-
-  const handleOpenModal = () => {
-    setIsOpen();
-  };
 
   return (
     <StyledSettingsPage>
@@ -32,10 +27,10 @@ export const SettingsPage = () => {
       <SettingsContainer>
         <Profile>
           <Title>Profile</Title>
-          <ProfileInfo currentTheme={currentTheme}>
+          <ProfileInfo $currentTheme={currentTheme}>
             <Label>
               Name
-              <SettingsInput placeholder={name} />
+              <SettingsInput $currentTheme={currentTheme} placeholder={name} />
             </Label>
             <Label>
               Email
@@ -45,24 +40,36 @@ export const SettingsPage = () => {
         </Profile>
         <Password>
           <Title>Password</Title>
-          <PasswordInfo currentTheme={currentTheme}>
+          <PasswordInfo $currentTheme={currentTheme}>
             <Label>
               Password
-              <SettingsInput placeholder="Your password" />
+              <SettingsInput
+                $currentTheme={currentTheme}
+                type="password"
+                placeholder="Your password"
+              />
             </Label>
             <Label>
               New password
-              <SettingsInput placeholder="New password" />
+              <SettingsInput
+                $currentTheme={currentTheme}
+                type="password"
+                placeholder="New password"
+              />
             </Label>
             <Label>
               Confirm password
-              <SettingsInput placeholder="Confirm password" />
+              <SettingsInput
+                $currentTheme={currentTheme}
+                type="password"
+                placeholder="Confirm password"
+              />
             </Label>
           </PasswordInfo>
         </Password>
         <ColorMode>
           <Title>Color mode</Title>
-          <ColorModeInfo currentTheme={currentTheme}>
+          <ColorModeInfo $currentTheme={currentTheme}>
             <ColorModeTextContainer>
               <ColorModeText>Dark</ColorModeText>
               <ColorModeText light>Use dark thema</ColorModeText>
@@ -71,8 +78,6 @@ export const SettingsPage = () => {
           </ColorModeInfo>
         </ColorMode>
       </SettingsContainer>
-      <button onClick={handleOpenModal}>open modal</button>
-      {isOpen && <ModalFiltersWindow toggleModal={setIsOpen} />}
     </StyledSettingsPage>
   );
 };
