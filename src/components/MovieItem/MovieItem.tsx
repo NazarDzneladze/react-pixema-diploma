@@ -2,6 +2,7 @@ import { FavoriteFilmIcon, NoImageAvailableImg, TrendsIcon } from "assets";
 import { memo } from "react";
 import { generatePath, Link } from "react-router-dom";
 import { ROUTE } from "router";
+import { selectAccount, useAppSelector } from "store";
 import { IMovie } from "types";
 import { getRandomRating } from "utils";
 import {
@@ -21,6 +22,8 @@ interface IProps {
 
 export const MovieItem = memo(
   ({ movie: { imdbID, poster, title }, isFavorite, isTrends }: IProps) => {
+    const { isAuth } = useAppSelector(selectAccount);
+
     const movie = {
       hidden: { y: 20, opacity: 0 },
       visible: {
@@ -34,7 +37,7 @@ export const MovieItem = memo(
         <Link to={generatePath(ROUTE.HOME + ROUTE.DETAILS, { imdb: imdbID })}>
           <PosterContainer>
             <MoviePoster src={poster === "N/A" ? NoImageAvailableImg : poster} alt={title} />
-            {isFavorite && <FavoriteFilmIcon />}
+            {isFavorite && isAuth && <FavoriteFilmIcon />}
             {isTrends && (
               <TrendsLabel>
                 <TrendsIcon />

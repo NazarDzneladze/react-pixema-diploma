@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Color } from "ui";
+import { Breakpoint, Color } from "ui";
 
 const StyledModalFiltersWindow = styled.div`
   display: grid;
@@ -10,8 +10,15 @@ const StyledModalFiltersWindow = styled.div`
   padding: 48px 40px 48px;
 
   background-color: ${Color.DARK};
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+
+  ${Breakpoint.XXS} {
+    border-radius: 0;
+  }
+
+  ${Breakpoint.SM} {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
 `;
 
 const FiltersHeader = styled.div`
