@@ -24,12 +24,25 @@ const StyledDetailsPage = styled.div`
   }
 `;
 
+const AddFavoriteButton = styled.button<{ $isAuth?: boolean }>`
+  padding: 19px;
+
+  border-radius: 10px;
+  border: none;
+  background-color: ${Color.GRAPHITE};
+
+  cursor: ${($isAuth) => ($isAuth ? "pointer" : "not-allowed")};
+`;
+
+const RemoveFavoriteButton = styled.button``;
+
 const DetailsContainer = styled.div`
   display: grid;
 
   ${Breakpoint.XXS} {
     grid-template-rows: repeat(3, auto);
     column-gap: 32px;
+    row-gap: 32px;
   }
 
   ${Breakpoint.MD} {
@@ -55,12 +68,19 @@ const GenreList = styled.ul`
 
 const GenreItem = styled.li`
   color: ${Color.LIGHT};
+
+  &:nth-child(n)::after {
+    content: "";
+    border: 1px solid ${Color.LIGHT};
+    border-radius: 50%;
+  }
 `;
 
 const HeaderInfo = styled.div`
   display: grid;
   grid-template-columns: repeat(2, auto);
   column-gap: 20px;
+  justify-items: start;
 
   ${Breakpoint.MD} {
     align-items: start;
@@ -69,10 +89,21 @@ const HeaderInfo = styled.div`
 `;
 
 const Raiting = styled.span`
-  background-color: ${Color.GRAPHITE};
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  column-gap: 10px;
+
+  padding: 8px;
+
+  background-color: #323537;
+  border-radius: 6px;
 
   svg path {
     fill: ${Color.WHITE_THEME};
+  }
+
+  svg {
+    place-self: center;
   }
 `;
 
@@ -87,7 +118,13 @@ const MovieInfo = styled.div`
   }
 `;
 
-const Runtime = styled.span``;
+const Runtime = styled.span`
+  padding: 8px;
+
+  color: ${Color.WHITE_THEME};
+  border-radius: 6px;
+  background-color: #323537;
+`;
 
 const MovieTitle = styled.h3``;
 
@@ -107,25 +144,31 @@ const DetailsPreview = styled.div`
   }
 `;
 
-const OtherDetails = styled.div`
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: repeat(7, auto);
-  row-gap: 20px;
-  column-gap: 60px;
-`;
-
 const Info = styled.p``;
 
 const Plot = styled.p`
   ${Typography.BODY}
 `;
 
-const MoviePoster = styled.img``;
+const MoviePoster = styled.img`
+  border-radius: 20px;
+`;
 
 const Carousel = styled(CarouselProvider)`
   display: grid;
   grid-template-rows: auto 1fr;
+`;
+
+const OtherDetails = styled.div`
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: repeat(7, auto);
+  row-gap: 20px;
+  column-gap: 60px;
+
+  ${Info}:nth-child(odd) {
+    color: ${Color.LIGHT};
+  }
 `;
 
 export {
@@ -145,4 +188,6 @@ export {
   OtherDetails,
   Info,
   Carousel,
+  AddFavoriteButton,
+  RemoveFavoriteButton,
 };

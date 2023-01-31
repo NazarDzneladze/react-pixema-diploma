@@ -1,10 +1,12 @@
-import { FavoritesIcon, IMDbIcon, NextSlideIcon } from "assets";
+import { CloseIcon, FavoritesIcon, IMDbIcon, NextSlideIcon } from "assets";
 import { Header, Spinner } from "components";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {
   addFavorite,
   fetchMovies,
+  removeFavorite,
+  selectAccount,
   selectMovieDetails,
   selectMovies,
   useAppDispatch,
@@ -36,9 +38,11 @@ import {
   OtherDetails,
   Info,
   Carousel,
+  AddFavoriteButton,
+  RemoveFavoriteButton,
 } from "./styles";
 import { useWindowSize } from "hooks";
-import { getRandomMovieKeyWord } from "utils";
+import { checkIsFavorite, getRandomMovieKeyWord } from "utils";
 
 export const DetailsPage = () => {
   const dispatch = useAppDispatch();
@@ -46,13 +50,14 @@ export const DetailsPage = () => {
   const { movieDetails, error, isLoading } = useAppSelector(selectMovieDetails);
   const { movies } = useAppSelector(selectMovies);
   const { imdb = "" } = useParams();
+  const { isAuth } = useAppSelector(selectAccount);
 
   useEffect(() => {
     dispatch(fetchMovieDetails(imdb));
   }, [dispatch, imdb]);
 
   const handleAddFavorite = () => {
-    const movieItem = {
+    const movieInfo = {
       title: title,
       year: year,
       imdbID: imdbID,
@@ -60,7 +65,19 @@ export const DetailsPage = () => {
       type: type,
     };
 
-    dispatch(addFavorite(movieItem));
+    dispatch(addFavorite(movieInfo));
+  };
+
+  const handleRemoveFavorrite = () => {
+    const movieInfo = {
+      title: title,
+      year: year,
+      imdbID: imdbID,
+      poster: poster,
+      type: type,
+    };
+
+    dispatch(removeFavorite(movieInfo));
   };
 
   const {
@@ -105,9 +122,19 @@ export const DetailsPage = () => {
           </DetailsHeader>
           <DetailsPreview>
             <MoviePoster src={poster} />
-            <button onClick={handleAddFavorite}>
-              <FavoritesIcon />
-            </button>
+            {checkIsFavorite(imdbID) ? (
+              <RemoveFavoriteButton onClick={handleRemoveFavorrite}>
+                <CloseIcon />
+              </RemoveFavoriteButton>
+            ) : (
+              <AddFavoriteButton
+                onClick={handleAddFavorite}
+                disabled={isAuth ? false : true}
+                $isAuth={isAuth}
+              >
+                <FavoritesIcon />
+              </AddFavoriteButton>
+            )}
           </DetailsPreview>
           <MovieInfo>
             <Plot>{plot}</Plot>
